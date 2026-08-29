@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";  
 $password = "";      
 $database = "smart_library";
-$port = 3307; // Tumhara naya port
+$port = 3307; // My New port
 
 // Database se connection banana
 $conn = mysqli_connect($servername, $username, $password, $database, $port);
@@ -12,6 +12,6 @@ $conn = mysqli_connect($servername, $username, $password, $database, $port);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    echo "Database Connected Successfully!"; 
+   // echo "Database Connected Successfully!"; 
 }
 ?>
