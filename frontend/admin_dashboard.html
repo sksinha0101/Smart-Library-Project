@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Smart Library</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Your Existing CSS -->
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TOP BLUE HEADER
+         ===================================================== -->
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+
+        <div class="container-fluid">
+
+            <!-- Smart Library -->
+            <div class="navbar-brand">
+
+                <i class="bi bi-book-half"></i>
+
+                Smart Library
+
+            </div>
+
+            <!-- Admin -->
+            <a href="admin_profile.html"
+               class="navbar-admin-btn">
+
+                <i class="bi bi-person-circle"></i>
+
+                Admin
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- =====================================================
+         SECOND BLUE CLICKABLE NAVIGATION
+         ===================================================== -->
+
+    <nav class="dark-blue-navigation">
+
+        <!-- Dashboard -->
+        <a href="admin_dashboard.html"
+           class="dark-nav-link active">
+
+            <i class="bi bi-house-door"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <!-- Overview -->
+        <a href="overview.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-grid"></i>
+
+            <span>Overview</span>
+
+        </a>
+
+        <!-- Add Book -->
+        <a href="add_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-plus-circle"></i>
+
+            <span>Add Book</span>
+
+        </a>
+
+        <!-- Available Books -->
+        <a href="available_books.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-bookmark-check"></i>
+
+            <span>Available Books</span>
+
+        </a>
+
+        <!-- Issued Books -->
+        <a href="issue_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-bookmark-plus"></i>
+
+            <span>Issued Books</span>
+
+        </a>
+
+        <!-- Return Books -->
+        <a href="return_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-arrow-return-left"></i>
+
+            <span>Return Books</span>
+
+        </a>
+
+        <!-- Total Students -->
+        <a href="students.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-people"></i>
+
+            <span>Total Students</span>
+
+        </a>
+
+        <!-- Admin Profile -->
+        <a href="admin_profile.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-person"></i>
+
+            <span>Admin Profile</span>
+
+        </a>
+
+        <!-- Logout -->
+        <a href="login.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <!-- =================================================
+             DASHBOARD HEADING
+             ================================================= -->
+
+        <div class="dashboard-heading">
+
+            <div>
+
+                <h2 class="fw-bold">
+
+                    <i class="bi bi-book-half"></i>
+
+                    Welcome to Smart Library
+
+                </h2>
+
+            </div>
+
+            <!-- Add Book Button -->
+            <a href="add_book.html"
+               class="btn btn-primary add-book-main-btn">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Add Book
+
+            </a>
+
+        </div>
+
+        <!-- =================================================
+             RECENT BOOKS
+             ================================================= -->
+
+        <div class="recent-books-card">
+
+            <!-- Card Header -->
+            <div class="recent-books-header">
+
+                <h5>
+
+                    <i class="bi bi-clock-history"></i>
+
+                    Recent Books
+
+                </h5>
+
+                <a href="add_book.html"
+                   class="btn btn-outline-primary">
+
+                    <i class="bi bi-plus-lg"></i>
+
+                    Add New
+
+                </a>
+
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Sl.no.</th>
+
+                            <th>ISBN</th>
+
+                            <th>Book Name</th>
+
+                            <th>Author</th>
+
+                            <th>Category</th>
+
+                            <th>Quantity</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <!-- 1 -->
+                        <tr>
+
+                            <td>1</td>
+
+                            <td>9780070630921</td>
+
+                            <td>Java Programming</td>
+
+                            <td>Herbert Schildt</td>
+
+                            <td>Programming</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 2 -->
+                        <tr>
+
+                            <td>2</td>
+
+                            <td>9780132126953</td>
+
+                            <td>Computer Networks</td>
+
+                            <td>Andrew S. Tanenbaum</td>
+
+                            <td>Networking</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 3 -->
+                        <tr>
+
+                            <td>3</td>
+
+                            <td>9781449355739</td>
+
+                            <td>Python Programming</td>
+
+                            <td>Mark Lutz</td>
+
+                            <td>Programming</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 4 -->
+                        <tr>
+
+                            <td>4</td>
+
+                            <td>9780070495438</td>
+
+                            <td>Advanced Java Programming</td>
+
+                            <td>Herbert Schildt</td>
+
+                            <td>Advanced Programming</td>
+
+                            <td>5</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 5 -->
+                        <tr>
+
+                            <td>5</td>
+
+                            <td>9780133943030</td>
+
+                            <td>Software Engineering</td>
+
+                            <td>Ian Sommerville</td>
+
+                            <td>Software Engineering</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 6 -->
+                        <tr>
+
+                            <td>6</td>
+
+                            <td>9780073523293</td>
+
+                            <td>
+                                Data Communication and Computer Networks
+                            </td>
+
+                            <td>Behrouz A. Forouzan</td>
+
+                            <td>Networking</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 7 -->
+                        <tr>
+
+                            <td>7</td>
+
+                            <td>9780134610993</td>
+
+                            <td>Artificial Intelligence</td>
+
+                            <td>Stuart Russell</td>
+
+                            <td>Artificial Intelligence</td>
+
+                            <td>3</td>
+
+                            <td>
+                                <span class="badge bg-danger">
+                                    Issued
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 8 -->
+                        <tr>
+
+                            <td>8</td>
+
+                            <td>9780070428072</td>
+
+                            <td>Machine Learning</td>
+
+                            <td>Tom M. Mitchell</td>
+
+                            <td>Artificial Intelligence</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 9 -->
+                        <tr>
+
+                            <td>9</td>
+
+                            <td>9780262535437</td>
+
+                            <td>Data Science</td>
+
+                            <td>Joel Grus</td>
+
+                            <td>Data Science</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 10 -->
+                        <tr>
+
+                            <td>10</td>
+
+                            <td>9781118868959</td>
+
+                            <td>Cloud Computing</td>
+
+                            <td>Rajkumar Buyya</td>
+
+                            <td>Cloud Computing</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 11 -->
+                        <tr>
+
+                            <td>11</td>
+
+                            <td>9780134772806</td>
+
+                            <td>Cybersecurity</td>
+
+                            <td>William Stallings</td>
+
+                            <td>Cybersecurity</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-danger">
+                                    Issued
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 12 -->
+                        <tr>
+
+                            <td>12</td>
+
+                            <td>9780000000000</td>
+
+                            <td>AI, IoT and Future Technologies</td>
+
+                            <td>John Doe</td>
+
+                            <td>AI, IoT and Future Technologies</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 13 -->
+                        <tr>
+
+                            <td>13</td>
+
+                            <td>9780132576277</td>
+
+                            <td>Data Structures and Algorithms</td>
+
+                            <td>Mark Allen Weiss</td>
+
+                            <td>Data Structures</td>
+
+                            <td>3</td>
+
+                            <td>
+                                <span class="badge bg-danger">
+                                    Issued
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 14 -->
+                        <tr>
+
+                            <td>14</td>
+
+                            <td>9780134101613</td>
+
+                            <td>
+                                Computer Organisation and Architecture
+                            </td>
+
+                            <td>William Stallings</td>
+
+                            <td>Computer Architecture</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 15 -->
+                        <tr>
+
+                            <td>15</td>
+
+                            <td>9780078022159</td>
+
+                            <td>Database Management System</td>
+
+                            <td>Abraham Silberschatz</td>
+
+                            <td>Database</td>
+
+                            <td>4</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <!-- 16 -->
+                        <tr>
+
+                            <td>16</td>
+
+                            <td>9781118063330</td>
+
+                            <td>Operating System(OS)</td>
+
+                            <td>Abraham Silberschatz</td>
+
+                            <td>Operating System</td>
+
+                            <td>3</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Available
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="text-center text-muted mt-4">
+
+            <small>
+
+                © 2026 Smart Library Management System
+
+            </small>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

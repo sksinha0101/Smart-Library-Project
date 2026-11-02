@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Issue Books - Smart Library</title>
+
+    <!-- ================= BOOTSTRAP CSS ================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- ================= BOOTSTRAP ICONS ================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- ================= MAIN CSS ================= -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =====================================================
+           ISBN + SCANNER
+        ====================================================== */
+
+        .isbn-scanner-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .isbn-scanner-group .form-control {
+            flex: 1;
+            min-width: 0;
+            height: 46px;
+        }
+
+        .scan-isbn-btn {
+            width: 54px;
+            height: 46px;
+            flex: 0 0 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 1px solid #0d6efd;
+            border-radius: 7px;
+            background: #ffffff;
+            color: #0d6efd;
+            font-size: 19px;
+        }
+
+        .scan-isbn-btn:hover {
+            background: #0d6efd;
+            color: #ffffff;
+        }
+
+        @media (max-width: 576px) {
+
+            .isbn-scanner-group {
+                gap: 8px;
+            }
+
+            .scan-isbn-btn {
+                width: 50px;
+                height: 46px;
+                flex-basis: 50px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+
+        <div class="container-fluid">
+
+            <!-- Smart Library -->
+
+            <a
+                class="navbar-brand fw-bold"
+                href="admin_dashboard.html">
+
+                <i class="bi bi-book-half"></i>
+
+                Smart Library
+
+            </a>
+
+
+            <!-- Admin -->
+
+            <a
+                href="admin_profile.html"
+                class="navbar-admin-btn">
+
+                <i class="bi bi-person-circle"></i>
+
+                Admin
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= COMMON NAVIGATION ================= -->
+
+    <script src="js/navigation.js?v=2"></script>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="page-content">
+
+
+        <!-- =================================================
+             PAGE HEADING
+        ================================================== -->
+
+        <div class="mb-4">
+
+            <h2 class="fw-bold">
+
+                Issue Books
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage branch-wise issued books and issue records
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ISSUE BOOK FORM
+             SAME STRUCTURE AS RETURN BOOK
+        ================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+
+            <!-- ================= CARD HEADER ================= -->
+
+            <div class="card-header bg-white">
+
+                <h5 class="fw-bold mb-0">
+
+                    <i class="bi bi-bookmark-plus me-1"></i>
+
+                    Issue Book
+
+                </h5>
+
+            </div>
+
+
+            <!-- ================= CARD BODY ================= -->
+
+            <div class="card-body">
+
+
+                <form id="issueBookForm">
+
+
+                    <!-- =================================================
+                         STUDENT DETAILS
+                    ================================================== -->
+
+                    <h6 class="fw-bold text-primary mb-3">
+
+                        <i class="bi bi-person-vcard me-1"></i>
+
+                        Student Details
+
+                    </h6>
+
+
+                    <div class="row">
+
+
+                        <!-- Student Name -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="student_name"
+                                class="form-label fw-semibold">
+
+                                Student Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="student_name"
+                                name="student_name"
+                                class="form-control"
+                                placeholder="Enter student name"
+                                required>
+
+                        </div>
+
+
+                        <!-- Roll No -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="roll_no"
+                                class="form-label fw-semibold">
+
+                                Roll No.
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="roll_no"
+                                name="roll_no"
+                                class="form-control"
+                                placeholder="Example: 2024-CSE-01"
+                                required>
+
+                        </div>
+
+
+                        <!-- Branch -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="branch"
+                                class="form-label fw-semibold">
+
+                                Branch
+
+                            </label>
+
+                            <select
+                                id="branch"
+                                name="branch"
+                                class="form-select"
+                                required>
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled>
+
+                                    Select Branch
+
+                                </option>
+
+                                <option value="CSE">
+                                    Computer Science & Engineering (CSE)
+                                </option>
+
+                                <option value="ECE">
+                                    Electronics & Communication Engineering (ECE)
+                                </option>
+
+                                <option value="EE">
+                                    Electrical Engineering (EE)
+                                </option>
+
+                                <option value="ME">
+                                    Mechanical Engineering (ME)
+                                </option>
+
+                                <option value="Civil">
+                                    Civil Engineering
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Student ID -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="student_id"
+                                class="form-label fw-semibold">
+
+                                Student ID
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="student_id"
+                                name="student_id"
+                                class="form-control"
+                                placeholder="Enter Student ID">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ================= SEPARATOR ================= -->
+
+                    <hr class="my-3">
+
+
+
+                    <!-- =================================================
+                         BOOK DETAILS
+                    ================================================== -->
+
+                    <h6 class="fw-bold text-primary mb-3">
+
+                        <i class="bi bi-book me-1"></i>
+
+                        Book Details
+
+                    </h6>
+
+
+                    <div class="row">
+
+
+                        <!-- Book Name -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="book_name"
+                                class="form-label fw-semibold">
+
+                                Book Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="book_name"
+                                name="book_name"
+                                class="form-control"
+                                placeholder="Enter book name"
+                                required>
+
+                        </div>
+
+
+                        <!-- ISBN -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="isbn"
+                                class="form-label fw-semibold">
+
+                                ISBN Number
+
+                            </label>
+
+
+                            <div class="isbn-scanner-group">
+
+                                <input
+                                    type="text"
+                                    id="isbn"
+                                    name="isbn"
+                                    class="form-control"
+                                    placeholder="Enter ISBN Number"
+                                    maxlength="17"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ================= SEPARATOR ================= -->
+
+                    <hr class="my-3">
+
+
+
+                    <!-- =================================================
+                         ISSUE DETAILS
+                    ================================================== -->
+
+                    <h6 class="fw-bold text-primary mb-3">
+
+                        <i class="bi bi-calendar-event me-1"></i>
+
+                        Issue Details
+
+                    </h6>
+
+
+                    <div class="row">
+
+
+                        <!-- Issue Date -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="issue_date"
+                                class="form-label fw-semibold">
+
+                                Issue Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="issue_date"
+                                name="issue_date"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <!-- Due Date -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label
+                                for="due_date"
+                                class="form-label fw-semibold">
+
+                                Due Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="due_date"
+                                name="due_date"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         BUTTONS
+                    ================================================== -->
+
+                    <div class="mt-2">
+
+
+                        <!-- ISSUE BOOK -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary me-2">
+
+                            <i class="bi bi-check-circle me-1"></i>
+
+                            Issue Book
+
+                        </button>
+
+
+                        <!-- SCAN QR -->
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-primary me-2 scanner-action-btn"
+                            onclick="openScanner()"
+                            title="Scan QR">
+
+                            <i class="bi bi-qr-code-scan me-1"></i>
+
+                            Scan QR
+
+                        </button>
+
+
+                        <!-- RESET -->
+
+                        <button
+                            type="reset"
+                            class="btn btn-secondary">
+
+                            <i class="bi bi-arrow-clockwise me-1"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ISSUE BOOK RECORDS
+             SAME AS RETURN BOOK
+        ================================================== -->
+
+        <div class="card shadow-sm">
+
+
+            <!-- ================= RECORD HEADER ================= -->
+
+            <div class="card-header bg-white">
+
+
+                <div class="row align-items-center">
+
+
+                    <!-- Title -->
+
+                    <div class="col-md-6">
+
+                        <h5 class="fw-bold mb-0">
+
+                            <i class="bi bi-clock-history me-1"></i>
+
+                            Issue Book Records
+
+                            <span
+                                id="issuedCount"
+                                class="badge bg-primary ms-2">
+
+                                30 Issued Copies
+
+                            </span>
+
+                        </h5>
+
+                    </div>
+
+
+                    <!-- Branch Filter -->
+
+                    <div class="col-md-3 mt-2 mt-md-0">
+
+                        <select
+                            id="branchFilter"
+                            class="form-select">
+
+                            <option value="All">
+                                All Branches
+                            </option>
+
+                            <option value="CSE">
+                                CSE
+                            </option>
+
+                            <option value="ECE">
+                                ECE
+                            </option>
+
+                            <option value="EE">
+                                EE
+                            </option>
+
+                            <option value="ME">
+                                ME
+                            </option>
+
+                            <option value="Civil">
+                                Civil
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Search -->
+
+                    <div class="col-md-3 mt-2 mt-md-0">
+
+                        <input
+                            type="text"
+                            id="recordSearch"
+                            class="form-control"
+                            placeholder="Search student / book...">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= RECORD BODY ================= -->
+
+            <div class="card-body">
+
+
+                <div class="table-responsive">
+
+
+                    <table
+                        class="table table-hover align-middle"
+                        id="issueTable">
+
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>Sl.No.</th>
+
+                                <th>Roll No.</th>
+
+                                <th>Student Name</th>
+
+                                <th>Branch</th>
+
+                                <th>Book Name</th>
+
+                                <th>ISBN Number</th>
+
+                                <th>Issue Date</th>
+
+                                <th>Due Date</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- ================= CSE ================= -->
+
+                            <tr>
+                                <td>1</td>
+                                <td>2024-CSE-01</td>
+                                <td>Rahul Kumar</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Java Programming</td>
+                                <td>9780070630921</td>
+                                <td>20-06-2026</td>
+                                <td>27-06-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>2024-CSE-02</td>
+                                <td>Aman Kumar</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Database Management System</td>
+                                <td>9780073523323</td>
+                                <td>21-07-2026</td>
+                                <td>28-07-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>2024-CSE-03</td>
+                                <td>Priya Kumari</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Computer Networks</td>
+                                <td>9780132126953</td>
+                                <td>22-08-2026</td>
+                                <td>29-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>2024-CSE-04</td>
+                                <td>Rohit Kumar</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Python Programming</td>
+                                <td>9780135404676</td>
+                                <td>23-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>2024-CSE-05</td>
+                                <td>Neha Kumari</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Software Engineering</td>
+                                <td>9780078022128</td>
+                                <td>25-08-2026</td>
+                                <td>01-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <!-- ================= ECE ================= -->
+
+                            <tr>
+                                <td>6</td>
+                                <td>2024-ECE-01</td>
+                                <td>Ravi Kumar</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Digital Electronics</td>
+                                <td>9780073529573</td>
+                                <td>20-06-2026</td>
+                                <td>27-06-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>2024-ECE-02</td>
+                                <td>Sneha Kumari</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Communication Systems</td>
+                                <td>9780071077860</td>
+                                <td>21-07-2026</td>
+                                <td>28-07-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>2024-ECE-03</td>
+                                <td>Rajeev Kumar</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Computer Networks</td>
+                                <td>9780132126953</td>
+                                <td>22-08-2026</td>
+                                <td>29-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>2024-ECE-04</td>
+                                <td>Anjali Kumari</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Microprocessors</td>
+                                <td>9780074632270</td>
+                                <td>23-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>2024-ECE-05</td>
+                                <td>Pankaj Kumar</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Embedded Systems</td>
+                                <td>9780131103627</td>
+                                <td>25-08-2026</td>
+                                <td>01-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <!-- ================= EE ================= -->
+
+                            <tr>
+                                <td>11</td>
+                                <td>2024-EE-01</td>
+                                <td>Karan Kumar</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Electrical Machines</td>
+                                <td>9780071077860</td>
+                                <td>20-06-2026</td>
+                                <td>27-06-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>2024-EE-02</td>
+                                <td>Neha Kumari</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Power Systems</td>
+                                <td>9780073529573</td>
+                                <td>21-07-2026</td>
+                                <td>28-07-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>2024-EE-03</td>
+                                <td>Amit Kumar</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Artificial Intelligence</td>
+                                <td>9780134610993</td>
+                                <td>22-08-2026</td>
+                                <td>29-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>2024-EE-04</td>
+                                <td>Pooja Kumari</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Control Systems</td>
+                                <td>9780073398063</td>
+                                <td>23-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>2024-EE-05</td>
+                                <td>Saurav Kumar</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Electrical Measurements</td>
+                                <td>9780070700921</td>
+                                <td>25-08-2026</td>
+                                <td>01-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <!-- ================= ME ================= -->
+
+                            <tr>
+                                <td>16</td>
+                                <td>2024-ME-01</td>
+                                <td>Vikas Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Data Structures and Algorithms</td>
+                                <td>9780134845673</td>
+                                <td>20-06-2026</td>
+                                <td>27-06-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>2024-ME-02</td>
+                                <td>Raunak Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Cloud Computing</td>
+                                <td>9780133387520</td>
+                                <td>21-07-2026</td>
+                                <td>28-07-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td>2024-ME-03</td>
+                                <td>Sonu Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Engineering Mechanics</td>
+                                <td>9780073398063</td>
+                                <td>22-08-2026</td>
+                                <td>29-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td>2024-ME-04</td>
+                                <td>Ankit Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Thermodynamics</td>
+                                <td>9780073398063</td>
+                                <td>23-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td>2024-ME-05</td>
+                                <td>Rakesh Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Manufacturing Processes</td>
+                                <td>9780073529242</td>
+                                <td>25-08-2026</td>
+                                <td>01-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <!-- ================= CIVIL ================= -->
+
+                            <tr>
+                                <td>21</td>
+                                <td>2024-CIVIL-01</td>
+                                <td>Arjun Kumar</td>
+                                <td><span class="badge bg-success">Civil</span></td>
+                                <td>Structural Engineering</td>
+                                <td>9780073398063</td>
+                                <td>20-06-2026</td>
+                                <td>27-06-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>22</td>
+                                <td>2024-CIVIL-02</td>
+                                <td>Nisha Kumari</td>
+                                <td><span class="badge bg-success">Civil</span></td>
+                                <td>Surveying</td>
+                                <td>9780070700921</td>
+                                <td>21-07-2026</td>
+                                <td>28-07-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>23</td>
+                                <td>2024-CIVIL-03</td>
+                                <td>Vikash Kumar</td>
+                                <td><span class="badge bg-success">Civil</span></td>
+                                <td>Construction Technology</td>
+                                <td>9780073401137</td>
+                                <td>22-08-2026</td>
+                                <td>29-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td>2024-CIVIL-04</td>
+                                <td>Shubham Kumar</td>
+                                <td><span class="badge bg-success">Civil</span></td>
+                                <td>Environmental Engineering</td>
+                                <td>9780073401144</td>
+                                <td>23-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>25</td>
+                                <td>2024-CIVIL-05</td>
+                                <td>Deepak Kumar</td>
+                                <td><span class="badge bg-success">Civil</span></td>
+                                <td>Transportation Engineering</td>
+                                <td>9780073398063</td>
+                                <td>25-08-2026</td>
+                                <td>30-08-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                            <!-- =================================================
+                                 NEW CSE RECORD - 26
+                            ================================================== -->
+
+                            <tr>
+                                <td>26</td>
+                                <td>2024-CSE-06</td>
+                                <td>Vivek Kumar</td>
+                                <td><span class="badge bg-primary">CSE</span></td>
+                                <td>Data Structures and Algorithms</td>
+                                <td>9780132576277</td>
+                                <td>26-08-2026</td>
+                                <td>02-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                            <!-- =================================================
+                                 NEW ECE RECORD - 27
+                            ================================================== -->
+
+                            <tr>
+                                <td>27</td>
+                                <td>2024-ECE-06</td>
+                                <td>Ritika Kumari</td>
+                                <td><span class="badge bg-warning text-dark">ECE</span></td>
+                                <td>Digital Signal Processing</td>
+                                <td>9780070700921</td>
+                                <td>26-08-2026</td>
+                                <td>02-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                            <!-- =================================================
+                                 NEW EE RECORD - 28
+                            ================================================== -->
+
+                            <tr>
+                                <td>28</td>
+                                <td>2024-EE-06</td>
+                                <td>Manish Kumar</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Power Electronics</td>
+                                <td>9780071077860</td>
+                                <td>27-08-2026</td>
+                                <td>03-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                            <!-- =================================================
+                                 NEW EE RECORD - 29
+                            ================================================== -->
+
+                            <tr>
+                                <td>29</td>
+                                <td>2024-EE-07</td>
+                                <td>Komal Kumari</td>
+                                <td><span class="badge bg-info text-dark">EE</span></td>
+                                <td>Electrical Engineering Materials</td>
+                                <td>9780073398063</td>
+                                <td>27-08-2026</td>
+                                <td>03-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                            <!-- =================================================
+                                 NEW ME RECORD - 30
+                            ================================================== -->
+
+                            <tr>
+                                <td>30</td>
+                                <td>2024-ME-06</td>
+                                <td>Abhishek Kumar</td>
+                                <td><span class="badge bg-secondary">ME</span></td>
+                                <td>Engineering Materials</td>
+                                <td>9780073398063</td>
+                                <td>28-08-2026</td>
+                                <td>04-09-2026</td>
+                                <td><span class="badge bg-success">Issued</span></td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="text-center text-muted mt-4">
+
+            <small>
+
+                © 2026 Smart Library Management System
+
+            </small>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ================= BOOTSTRAP JS ================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        // =====================================================
+        // OPEN SCANNER
+        // =====================================================
+
+        function openScanner() {
+
+            window.location.href = "scanner.html";
+
+        }
+
+
+        function scanISBN() {
+
+            window.location.href = "scanner.html";
+
+        }
+
+
+
+        // =====================================================
+        // UPDATE ISSUED COUNT
+        // =====================================================
+
+        function updateIssuedCount() {
+
+            const rows =
+                document.querySelectorAll(
+                    "#issueTable tbody tr"
+                );
+
+            document.getElementById("issuedCount").textContent =
+                rows.length + " Issued Copies";
+
+        }
+
+
+
+        // =====================================================
+        // SET TODAY AS ISSUE DATE
+        // =====================================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const issueDate =
+                    document.getElementById("issue_date");
+
+                if (issueDate) {
+
+                    issueDate.value =
+                        new Date()
+                            .toISOString()
+                            .split("T")[0];
+
+                }
+
+
+                // Initial issued count
+
+                updateIssuedCount();
+
+            }
+        );
+
+
+
+        // =====================================================
+        // FORM SUBMIT
+        // =====================================================
+
+        document
+            .getElementById("issueBookForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const studentName =
+                        document
+                            .getElementById("student_name")
+                            .value
+                            .trim();
+
+
+                    const rollNo =
+                        document
+                            .getElementById("roll_no")
+                            .value
+                            .trim();
+
+
+                    const branch =
+                        document
+                            .getElementById("branch")
+                            .value;
+
+
+                    const bookName =
+                        document
+                            .getElementById("book_name")
+                            .value
+                            .trim();
+
+
+                    const isbn =
+                        document
+                            .getElementById("isbn")
+                            .value
+                            .trim();
+
+
+                    const issueDate =
+                        document
+                            .getElementById("issue_date")
+                            .value;
+
+
+                    const dueDate =
+                        document
+                            .getElementById("due_date")
+                            .value;
+
+
+                    const table =
+                        document.querySelector(
+                            "#issueTable tbody"
+                        );
+
+
+                    const rowNumber =
+                        table.rows.length + 1;
+
+
+                    const row =
+                        table.insertRow();
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            ${rowNumber}
+                        </td>
+
+                        <td>
+                            ${rollNo}
+                        </td>
+
+                        <td>
+                            ${studentName}
+                        </td>
+
+                        <td>
+
+                            <span class="badge ${getBranchBadge(branch)}">
+
+                                ${branch}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${bookName}
+                        </td>
+
+                        <td>
+                            ${isbn}
+                        </td>
+
+                        <td>
+                            ${formatDate(issueDate)}
+                        </td>
+
+                        <td>
+                            ${formatDate(dueDate)}
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-success">
+
+                                Issued
+
+                            </span>
+
+                        </td>
+
+                    `;
+
+
+                    // Update count after adding new record
+
+                    updateIssuedCount();
+
+
+                    alert(
+                        "Book issued successfully!"
+                    );
+
+
+                    this.reset();
+
+                }
+            );
+
+
+
+        // =====================================================
+        // FORMAT DATE
+        // =====================================================
+
+        function formatDate(dateValue) {
+
+            if (!dateValue) {
+
+                return "";
+
+            }
+
+
+            const parts =
+                dateValue.split("-");
+
+
+            return (
+                parts[2] +
+                "-" +
+                parts[1] +
+                "-" +
+                parts[0]
+            );
+
+        }
+
+
+
+        // =====================================================
+        // BRANCH BADGE
+        // =====================================================
+
+        function getBranchBadge(branch) {
+
+            switch (branch) {
+
+                case "CSE":
+                    return "bg-primary";
+
+                case "ECE":
+                    return "bg-warning text-dark";
+
+                case "EE":
+                    return "bg-info text-dark";
+
+                case "ME":
+                    return "bg-secondary";
+
+                case "Civil":
+                    return "bg-success";
+
+                default:
+                    return "bg-dark";
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // SEARCH + BRANCH FILTER
+        // EXACTLY LIKE RETURN BOOK
+        // =====================================================
+
+        function filterRecords() {
+
+            const search =
+                document
+                    .getElementById("recordSearch")
+                    .value
+                    .toLowerCase();
+
+
+            const branch =
+                document
+                    .getElementById("branchFilter")
+                    .value;
+
+
+            const rows =
+                document.querySelectorAll(
+                    "#issueTable tbody tr"
+                );
+
+
+            rows.forEach(function (row) {
+
+                const rowText =
+                    row.innerText.toLowerCase();
+
+
+                const rowBranch =
+                    row.cells[3]
+                        ? row.cells[3].innerText.trim()
+                        : "";
+
+
+                const matchesSearch =
+                    rowText.includes(search);
+
+
+                const matchesBranch =
+                    branch === "All" ||
+                    rowBranch.includes(branch);
+
+
+                if (
+                    matchesSearch &&
+                    matchesBranch
+                ) {
+
+                    row.style.display = "";
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        document
+            .getElementById("recordSearch")
+            .addEventListener(
+                "input",
+                filterRecords
+            );
+
+
+        document
+            .getElementById("branchFilter")
+            .addEventListener(
+                "change",
+                filterRecords
+            );
+
+
+
+    </script>
+
+
+</body>
+
+</html>
