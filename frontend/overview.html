@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Overview - Smart Library</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <!-- Overview CSS -->
+    <link rel="stylesheet"
+          href="css/overview.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP BLUE HEADER
+         ===================================================== -->
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+
+        <div class="container-fluid">
+
+            <!-- Smart Library -->
+
+            <a href="admin_dashboard.html"
+               class="navbar-brand">
+
+                <i class="bi bi-book-half"></i>
+
+                Smart Library
+
+            </a>
+
+
+            <!-- Admin -->
+
+            <a href="admin_profile.html"
+               class="navbar-admin-btn">
+
+                <i class="bi bi-person-circle"></i>
+
+                Admin
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         DARK BLUE NAVIGATION
+         ===================================================== -->
+
+    <nav class="dark-blue-navigation">
+
+
+        <!-- Dashboard -->
+
+        <a href="admin_dashboard.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-house-door"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <!-- Overview -->
+
+        <a href="overview.html"
+           class="dark-nav-link active">
+
+            <i class="bi bi-grid"></i>
+
+            <span>Overview</span>
+
+        </a>
+
+
+        <!-- Add Book -->
+
+        <a href="add_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-plus-circle"></i>
+
+            <span>Add Book</span>
+
+        </a>
+
+
+        <!-- Available Books -->
+
+        <a href="available_books.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-bookmark-check"></i>
+
+            <span>Available Books</span>
+
+        </a>
+
+
+        <!-- Issued Books -->
+
+        <a href="issue_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-bookmark-plus"></i>
+
+            <span>Issued Books</span>
+
+        </a>
+
+
+        <!-- Return Books -->
+
+        <a href="return_book.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-arrow-return-left"></i>
+
+            <span>Return Books</span>
+
+        </a>
+
+
+        <!-- Total Students -->
+
+        <a href="students.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-people"></i>
+
+            <span>Total Students</span>
+
+        </a>
+
+
+        <!-- Admin Profile -->
+
+        <a href="admin_profile.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-person"></i>
+
+            <span>Admin Profile</span>
+
+        </a>
+
+
+        <!-- Logout -->
+
+        <a href="login.html"
+           class="dark-nav-link">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="overview-main-content">
+
+
+        <!-- =================================================
+             PAGE HEADING
+             ================================================= -->
+
+        <div class="overview-page-heading">
+
+            <div>
+
+                <h2>
+
+                    
+                <i class="bi bi-grid-fill overview-title-icon"></i>
+                        Library Overview
+                </h2>
+
+
+                <p>
+
+                    Complete branch-wise statistics of
+                    Smart Library Management System
+
+                </p>
+
+            </div>
+
+
+            <!-- Dashboard Button -->
+
+            <a href="admin_dashboard.html"
+               class="btn btn-primary overview-dashboard-btn">
+
+                <i class="bi bi-house-door"></i>
+
+                Go to Dashboard
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FIVE STATISTICS BOXES
+             ================================================= -->
+
+        <div class="overview-statistics-grid">
+
+
+            <!-- BOX 1 : AVAILABLE BOOKS -->
+
+            <div class="overview-stat-box">
+
+                <div class="overview-stat-icon available-icon">
+
+                    <i class="bi bi-book"></i>
+
+                </div>
+
+
+                <div class="overview-stat-content">
+
+                    <h6>
+                        Available Books
+                    </h6>
+
+                    <h2 id="totalAvailable">
+                        77
+                    </h2>
+
+                    <p>
+                        Books currently available
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOX 2 : ISSUED BOOKS -->
+
+            <div class="overview-stat-box">
+
+                <div class="overview-stat-icon issued-icon">
+
+                    <i class="bi bi-bookmark-plus"></i>
+
+                </div>
+
+
+                <div class="overview-stat-content">
+
+                    <h6>
+                        Issued Books
+                    </h6>
+
+                    <h2 id="totalIssued">
+                        30
+                    </h2>
+
+                    <p>
+                        Books currently issued
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOX 3 : RETURNED BOOKS -->
+
+            <div class="overview-stat-box">
+
+                <div class="overview-stat-icon return-icon">
+
+                    <i class="bi bi-arrow-return-left"></i>
+
+                </div>
+
+
+                <div class="overview-stat-content">
+
+                    <h6>
+                        Return Books
+                    </h6>
+
+                    <h2 id="totalReturned">
+                        23
+                    </h2>
+
+                    <p>
+                        Books returned
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOX 4 : TOTAL STUDENTS -->
+
+            <div class="overview-stat-box">
+
+                <div class="overview-stat-icon students-icon">
+
+                    <i class="bi bi-people"></i>
+
+                </div>
+
+
+                <div class="overview-stat-content">
+
+                    <h6>
+                        Total Students
+                    </h6>
+
+                    <h2>
+                        55
+                    </h2>
+
+                    <p>
+                        Registered students
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOX 5 : TOTAL BOOKS -->
+
+            <div class="overview-stat-box">
+
+                <div class="overview-stat-icon total-books-icon">
+
+                    <i class="bi bi-collection"></i>
+
+                </div>
+
+
+                <div class="overview-stat-content">
+
+                    <h6>
+                        Total Books
+                    </h6>
+
+                    <h2 id="totalBooks">
+                        130
+                    </h2>
+
+                    <p>
+                        Total books in library
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             BRANCH-WISE OVERVIEW
+             ================================================= -->
+
+        <div class="overview-branch-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="overview-branch-header">
+
+                <div>
+
+                    <h4>
+
+                        <i class="bi bi-diagram-3-fill"></i>
+
+                        Branch-wise Library Overview
+
+                    </h4>
+
+                    <p>
+                        Books status according to each branch
+                    </p>
+
+                </div>
+
+
+                <!-- Filters -->
+
+                <div class="overview-filters">
+
+
+                    <!-- Branch Filter -->
+
+                    <select id="branchFilter"
+                            class="form-select"
+                            onchange="filterOverview()">
+
+                        <option value="all">
+                            All Branches
+                        </option>
+
+                        <option value="CSE">
+                            CSE
+                        </option>
+
+                        <option value="ECE">
+                            ECE
+                        </option>
+
+                        <option value="EE">
+                            EE
+                        </option>
+
+                        <option value="ME">
+                            ME
+                        </option>
+
+                        <option value="Civil">
+                            Civil
+                        </option>
+
+                    </select>
+
+
+                    <!-- Search -->
+
+                    <input
+                        type="text"
+                        id="branchSearch"
+                        class="form-control"
+                        placeholder="Search branch..."
+                        onkeyup="filterOverview()">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+                 ================================================= -->
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0"
+                       id="branchOverviewTable">
+
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>Sl. No.</th>
+
+                            <th>Branch</th>
+
+                            <th>Total Books</th>
+
+                            <th>Issued Books</th>
+
+                            <th>Returned Books</th>
+
+                            <th>Available Books</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- =================================================
+                             CSE
+                             ================================================= -->
+
+                        <tr data-branch="CSE">
+
+                            <td>1</td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    CSE
+                                </span>
+
+                            </td>
+
+                            <td class="fw-bold">
+                                30
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-danger">
+                                    8
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    5
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    17
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- =================================================
+                             ECE
+                             ================================================= -->
+
+                        <tr data-branch="ECE">
+
+                            <td>2</td>
+
+                            <td>
+
+                                <span class="badge bg-warning text-dark">
+                                    ECE
+                                </span>
+
+                            </td>
+
+                            <td class="fw-bold">
+                                25
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-danger">
+                                    6
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    4
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    15
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- =================================================
+                             EE
+                             ================================================= -->
+
+                        <tr data-branch="EE">
+
+                            <td>3</td>
+
+                            <td>
+
+                                <span class="badge bg-info text-dark">
+                                    EE
+                                </span>
+
+                            </td>
+
+                            <td class="fw-bold">
+                                28
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-danger">
+                                    7
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    6
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    15
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- =================================================
+                             ME
+                             ================================================= -->
+
+                        <tr data-branch="ME">
+
+                            <td>4</td>
+
+                            <td>
+
+                                <span class="badge bg-secondary">
+                                    ME
+                                </span>
+
+                            </td>
+
+                            <td class="fw-bold">
+                                22
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-danger">
+                                    5
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    3
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    14
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- =================================================
+                             CIVIL
+                             ================================================= -->
+
+                        <tr data-branch="Civil">
+
+                            <td>5</td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    Civil
+                                </span>
+
+                            </td>
+
+                            <td class="fw-bold">
+                                25
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-danger">
+                                    4
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+                                    5
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+                                    16
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                    <!-- =================================================
+                         OVERALL TOTAL
+                         ================================================= -->
+
+                    <tfoot>
+
+                        <tr class="fw-bold table-primary">
+
+                            <td colspan="2">
+
+                                <i class="bi bi-calculator"></i>
+
+                                Overall Total
+
+                            </td>
+
+                            <td id="footerTotalBooks">
+                                130
+                            </td>
+
+                            <td id="footerTotalIssued">
+
+                                <span class="badge bg-danger">
+                                    30
+                                </span>
+
+                            </td>
+
+                            <td id="footerTotalReturned">
+
+                                <span class="badge bg-success">
+                                    23
+                                </span>
+
+                            </td>
+
+                            <td id="footerTotalAvailable">
+
+                                <span class="badge bg-primary">
+                                    77
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tfoot>
+
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INFORMATION CARD
+             ================================================= -->
+
+        <div class="overview-information-card">
+
+            <div>
+
+                <h4>
+
+                    <i class="bi bi-info-circle"></i>
+
+                    Library Statistics
+
+                </h4>
+
+
+                <p>
+
+                    This overview shows the branch-wise status
+                    of books maintained by the Smart Library
+                    Management System.
+
+                    <strong>
+                        Available Books = Total Books -
+                        Issued Books - Returned Books
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="text-center text-muted mt-5">
+
+            <small>
+
+                © 2026 Smart Library Management System
+
+            </small>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+        function filterOverview() {
+
+            const branchFilter =
+                document.getElementById("branchFilter")
+                    .value
+                    .toLowerCase();
+
+
+            const search =
+                document.getElementById("branchSearch")
+                    .value
+                    .toLowerCase();
+
+
+            const rows =
+                document.querySelectorAll(
+                    "#branchOverviewTable tbody tr"
+                );
+
+
+            rows.forEach(function(row) {
+
+                const branch =
+                    row.getAttribute("data-branch")
+                        .toLowerCase();
+
+
+                const rowText =
+                    row.innerText.toLowerCase();
+
+
+                const branchMatch =
+                    branchFilter === "all" ||
+                    branch === branchFilter;
+
+
+                const searchMatch =
+                    rowText.includes(search);
+
+
+                if (branchMatch && searchMatch) {
+
+                    row.style.display = "";
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1919 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Profile - Smart Library</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- COMMON NAVIGATION -->
+
+<script src="js/navigation.js?v=2"></script>
+
+
+<!-- ================================================= -->
+<!-- PROFILE CONTENT -->
+<!-- ================================================= -->
+
+<main class="profile-page-content">
+
+
+    <!-- ================================================= -->
+    <!-- PAGE HEADING -->
+    <!-- ================================================= -->
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+            Admin Profile
+        </h2>
+
+        <p class="text-muted">
+            Administrator account and library management information
+        </p>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- ADMIN HEADER -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="admin-profile-header">
+
+            <div class="admin-photo-wrapper">
+
+                <!-- Profile Photo: Click to show options -->
+                <div class="admin-big-icon"
+                     id="adminPhotoBox"
+                     title="Click to manage profile photo">
+
+                    <i class="bi bi-person-circle" id="defaultAdminIcon"></i>
+
+                    <img
+                        id="adminProfilePhoto"
+                        src=""
+                        alt="Admin Profile Photo"
+                        style="display:none;">
+
+                </div>
+
+                <!-- Hidden Photo Options -->
+                <div class="admin-photo-menu" id="adminPhotoMenu">
+
+                    <button type="button" id="changeAdminPhoto">
+                        <i class="bi bi-camera"></i>
+                        <span id="photoOptionText">Add Photo</span>
+                    </button>
+
+                    <button type="button" id="deleteAdminPhoto">
+                        <i class="bi bi-trash"></i>
+                        Delete Photo
+                    </button>
+
+                </div>
+
+                <input
+                    type="file"
+                    id="adminPhotoInput"
+                    accept="image/*"
+                    hidden>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Library Admin
+                </h2>
+
+                <p>
+                    Administrator
+                </p>
+
+                <span class="badge bg-success">
+                    Active
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- PERSONAL INFORMATION -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="bi bi-person-vcard"></i>
+
+                Personal Information
+
+            </h4>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-md-6">
+
+                    <label>Admin Name</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Library Admin"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Admin ID</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="ADM001"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        value="admin@smartlibrary.com"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="9876543210"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Role</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Administrator"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Account Status</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Active"
+                        readonly>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- LIBRARY INFORMATION -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="bi bi-building"></i>
+
+                Library Information
+
+            </h4>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-md-6">
+
+                    <label>Library Name</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Smart Library"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Library ID</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="LIB001"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Library Type</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="College Library"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Library Location</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Vaishali, Bihar"
+                        readonly>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- LIBRARY STATISTICS -->
+    <!-- ================================================= -->
+
+    <div class="library-stats">
+
+
+        <!-- TOTAL BOOKS -->
+
+        <div class="stat-box">
+
+            <i class="bi bi-book"></i>
+
+            <h3>372</h3>
+
+            <p>Total Books</p>
+
+            <a href="available_books.html">
+                View Books →
+            </a>
+
+        </div>
+
+
+        <!-- AVAILABLE BOOKS -->
+
+        <div class="stat-box">
+
+            <i class="bi bi-bookmark-check"></i>
+
+            <h3>21</h3>
+
+            <p>Available Books</p>
+
+            <a href="available_books.html">
+                View Available →
+            </a>
+
+        </div>
+
+
+        <!-- ISSUED BOOKS -->
+
+        <div class="stat-box">
+
+            <i class="bi bi-journal-arrow-up"></i>
+
+            <h3>30</h3>
+
+            <p>Issued Books</p>
+
+            <a href="issue_book.html">
+                View Issued →
+            </a>
+
+        </div>
+
+
+        <!-- RETURN BOOKS -->
+
+        <div class="stat-box">
+
+            <i class="bi bi-arrow-return-left"></i>
+
+            <h3>20</h3>
+
+            <p>Return Books</p>
+
+            <a href="return_book.html">
+                View Returned →
+            </a>
+
+        </div>
+
+
+        <!-- TOTAL STUDENTS -->
+
+        <div class="stat-box">
+
+            <i class="bi bi-people"></i>
+
+            <h3>55</h3>
+
+            <p>Total Students</p>
+
+            <a href="students.html">
+                View Students →
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- ADMIN PERMISSIONS -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="bi bi-shield-check"></i>
+
+                Admin Permissions
+
+            </h4>
+
+
+            <div class="row g-3">
+
+
+                <div class="col-md-6">
+
+                    <a href="add_book.html"
+                       class="permission-item">
+
+                        <i class="bi bi-plus-circle"></i>
+
+                        <span>
+                            Add Books
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <a href="available_books.html"
+                       class="permission-item">
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        <span>
+                            Manage Books
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <a href="issue_book.html"
+                       class="permission-item">
+
+                        <i class="bi bi-journal-arrow-up"></i>
+
+                        <span>
+                            Issue Books
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <a href="return_book.html"
+                       class="permission-item">
+
+                        <i class="bi bi-arrow-return-left"></i>
+
+                        <span>
+                            Return Books
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <a href="students.html"
+                       class="permission-item">
+
+                        <i class="bi bi-people"></i>
+
+                        <span>
+                            Manage Students
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <a href="scanner.html"
+                       class="permission-item">
+
+                        <i class="bi bi-qr-code-scan"></i>
+
+                        <span>
+                            Library Scanner
+                        </span>
+
+                        <i class="bi bi-chevron-right ms-auto"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- SECURITY -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="bi bi-shield-lock"></i>
+
+                Security
+
+            </h4>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-md-6">
+
+                    <label>Account Status</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Active"
+                        readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label>Last Login</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="01 September 2026"
+                        readonly>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-outline-primary mt-4">
+
+                <i class="bi bi-key"></i>
+
+                Change Password
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- STUDENT PROFILES -->
+    <!-- ================================================= -->
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+
+                <i class="bi bi-people-fill"></i>
+
+                Student Profiles
+
+            </h2>
+
+            <p class="text-muted mb-0">
+                Search students or filter them branch-wise
+            </p>
+
+        </div>
+
+
+        <div class="student-tools">
+
+
+            <!-- SEARCH -->
+
+            <div class="student-search">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                    type="text"
+                    id="studentSearch"
+                    placeholder="Search name or roll no..."
+                    onkeyup="filterStudents()">
+
+            </div>
+
+
+            <!-- BRANCH FILTER -->
+
+            <div class="branch-filter">
+
+                <select
+                    id="branchFilter"
+                    onchange="filterStudents()">
+
+                    <option value="all">
+                        All Branches
+                    </option>
+
+                    <option value="CSE">
+                        CSE
+                    </option>
+
+                    <option value="ELE">
+                        ELE
+                    </option>
+
+                    <option value="EE">
+                        EE
+                    </option>
+
+                    <option value="ME">
+                        ME
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- COUNT -->
+
+            <span
+                class="student-count"
+                id="studentCount">
+
+                55 Students
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- 55 STUDENT LIST -->
+    <!-- ================================================= -->
+
+    <div class="students-container"
+         id="studentsContainer">
+
+
+        <!-- ================= CSE 01 ================= -->
+
+        <div class="student-card" data-name="Rahul Kumar" data-roll="2024-CSE-01" data-branch="CSE">
+
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+
+            <div class="student-info">
+
+                <h3>Rahul Kumar</h3>
+
+                <p><strong>Roll No.:</strong> 2024-CSE-01</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+
+            </div>
+
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-01" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CSE 02 ================= -->
+
+        <div class="student-card" data-name="Aman Kumar" data-roll="2024-CSE-02" data-branch="CSE">
+
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+
+            <div class="student-info">
+
+                <h3>Aman Kumar</h3>
+
+                <p><strong>Roll No.:</strong> 2024-CSE-02</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+
+            </div>
+
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-02" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CSE 03 ================= -->
+
+        <div class="student-card" data-name="Priya Kumari" data-roll="2024-CSE-03" data-branch="CSE">
+
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+
+            <div class="student-info">
+
+                <h3>Priya Kumari</h3>
+
+                <p><strong>Roll No.:</strong> 2024-CSE-03</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+
+            </div>
+
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-03" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CSE 04 ================= -->
+
+        <div class="student-card" data-name="Rohit Kumar" data-roll="2024-CSE-04" data-branch="CSE">
+
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+
+            <div class="student-info">
+
+                <h3>Rohit Kumar</h3>
+
+                <p><strong>Roll No.:</strong> 2024-CSE-04</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+
+            </div>
+
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-04" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CSE 05 ================= -->
+
+        <div class="student-card" data-name="Neha Kumari" data-roll="2024-CSE-05" data-branch="CSE">
+
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+
+            <div class="student-info">
+
+                <h3>Neha Kumari</h3>
+
+                <p><strong>Roll No.:</strong> 2024-CSE-05</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+
+            </div>
+
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-05" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CSE 06-14 ================= -->
+
+        <div class="student-card" data-name="Arnav Kumar" data-roll="2024-CSE-06" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Arnav Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-06</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-06" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Simran Kumari" data-roll="2024-CSE-07" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Simran Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-07</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-07" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Mohit Kumar" data-roll="2024-CSE-08" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Mohit Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-08</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-08" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Ankit Kumar" data-roll="2024-CSE-09" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Ankit Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-09</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-09" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Kajal Kumari" data-roll="2024-CSE-10" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Kajal Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-10</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-10" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Vivek Kumar" data-roll="2024-CSE-11" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Vivek Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-11</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-11" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Shivam Kumar" data-roll="2024-CSE-12" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Shivam Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-12</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-12" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Komal Kumari" data-roll="2024-CSE-13" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Komal Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-13</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-13" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Aditya Kumar" data-roll="2024-CSE-14" data-branch="CSE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Aditya Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-CSE-14</p>
+                <p><strong>Branch:</strong> CSE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-CSE-14" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ================= ELE 01-14 ================= -->
+
+        <div class="student-card" data-name="Ravi Kumar" data-roll="2024-ELE-01" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Ravi Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-01</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-01" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Sneha Kumari" data-roll="2024-ELE-02" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Sneha Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-02</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-02" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Rajeev Kumar" data-roll="2024-ELE-03" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Rajeev Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-03</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-03" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Anjali Kumari" data-roll="2024-ELE-04" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Anjali Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-04</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-04" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Pankaj Kumar" data-roll="2024-ELE-05" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Pankaj Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-05</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-05" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Kavya Kumari" data-roll="2024-ELE-06" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Kavya Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-06</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-06" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Abhishek Kumar" data-roll="2024-ELE-07" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Abhishek Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-07</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-07" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Swati Kumari" data-roll="2024-ELE-08" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Swati Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-08</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-08" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Deepak Kumar" data-roll="2024-ELE-09" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Deepak Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-09</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-09" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Shreya Kumari" data-roll="2024-ELE-10" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Shreya Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-10</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-10" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Rohit Kumar" data-roll="2024-ELE-11" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Rohit Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-11</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-11" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Muskan Kumari" data-roll="2024-ELE-12" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Muskan Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-12</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-12" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Vishal Kumar" data-roll="2024-ELE-13" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Vishal Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-13</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-13" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Nisha Kumari" data-roll="2024-ELE-14" data-branch="ELE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Nisha Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ELE-14</p>
+                <p><strong>Branch:</strong> ELE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ELE-14" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ================= EE 01-14 ================= -->
+
+        <div class="student-card" data-name="Karan Kumar" data-roll="2024-EE-01" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Karan Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-01</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-01" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Neha Kumari" data-roll="2024-EE-02" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Neha Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-02</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-02" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Amit Kumar" data-roll="2024-EE-03" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Amit Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-03</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-03" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Pooja Kumari" data-roll="2024-EE-04" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Pooja Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-04</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-04" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Saurav Kumar" data-roll="2024-EE-05" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Saurav Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-05</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-05" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Manish Kumar" data-roll="2024-EE-06" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Manish Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-06</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-06" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Sonali Kumari" data-roll="2024-EE-07" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Sonali Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-07</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-07" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Rakesh Kumar" data-roll="2024-EE-08" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Rakesh Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-08</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-08" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Priyanka Kumari" data-roll="2024-EE-09" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Priyanka Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-09</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-09" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Vivek Kumar" data-roll="2024-EE-10" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Vivek Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-10</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-10" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Shubham Kumar" data-roll="2024-EE-11" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Shubham Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-11</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-11" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Riya Kumari" data-roll="2024-EE-12" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Riya Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-12</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-12" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Ajay Kumar" data-roll="2024-EE-13" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Ajay Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-13</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-13" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Ritu Kumari" data-roll="2024-EE-14" data-branch="EE">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Ritu Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-EE-14</p>
+                <p><strong>Branch:</strong> EE</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-EE-14" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ================= ME 01-13 ================= -->
+
+        <div class="student-card" data-name="Vikas Kumar" data-roll="2024-ME-01" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Vikas Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-01</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-01" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Raunak Kumar" data-roll="2024-ME-02" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Raunak Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-02</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-02" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Sonu Kumar" data-roll="2024-ME-03" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Sonu Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-03</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-03" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Ankit Kumar" data-roll="2024-ME-04" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Ankit Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-04</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-04" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Rakesh Kumar" data-roll="2024-ME-05" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Rakesh Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-05</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-05" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Shivani Kumari" data-roll="2024-ME-06" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Shivani Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-06</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-06" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Manoj Kumar" data-roll="2024-ME-07" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Manoj Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-07</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-07" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Akash Kumar" data-roll="2024-ME-08" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Akash Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-08</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-08" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Jyoti Kumari" data-roll="2024-ME-09" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Jyoti Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-09</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-09" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Abhishek Kumar" data-roll="2024-ME-10" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Abhishek Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-10</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-10" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Shubham Kumar" data-roll="2024-ME-11" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Shubham Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-11</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 0</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-11" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Neeraj Kumar" data-roll="2024-ME-12" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Neeraj Kumar</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-12</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 2</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-12" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+        <div class="student-card" data-name="Preeti Kumari" data-roll="2024-ME-13" data-branch="ME">
+            <div class="student-icon"><i class="bi bi-person-circle"></i></div>
+            <div class="student-info">
+                <h3>Preeti Kumari</h3>
+                <p><strong>Roll No.:</strong> 2024-ME-13</p>
+                <p><strong>Branch:</strong> ME</p>
+                <p><strong>Books Issued:</strong> 1</p>
+            </div>
+            <div class="student-action">
+                <a href="student_profile.html?roll=2024-ME-13" class="view-profile-btn">
+                    <i class="bi bi-person-vcard"></i> View Profile
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- NO STUDENT FOUND -->
+    <!-- ================================================= -->
+
+    <div
+        id="noStudentFound"
+        class="text-center text-muted py-4"
+        style="display:none;">
+
+        <i class="bi bi-search fs-3"></i>
+
+        <p class="mt-2 mb-0">
+            No student found.
+        </p>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- BACK BUTTON -->
+    <!-- ================================================= -->
+
+    <div class="text-end mb-4 mt-4">
+
+        <a
+            href="admin_dashboard.html"
+            class="btn btn-primary">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<!-- ================================================= -->
+<!-- ADMIN PHOTO JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const photoBox = document.getElementById("adminPhotoBox");
+    const photoMenu = document.getElementById("adminPhotoMenu");
+    const photoInput = document.getElementById("adminPhotoInput");
+
+    const profilePhoto = document.getElementById("adminProfilePhoto");
+    const defaultIcon = document.getElementById("defaultAdminIcon");
+
+    const changeButton = document.getElementById("changeAdminPhoto");
+    const deleteButton = document.getElementById("deleteAdminPhoto");
+    const optionText = document.getElementById("photoOptionText");
+
+    const STORAGE_KEY = "smartLibraryAdminPhoto";
+
+    function loadAdminPhoto() {
+
+        const savedPhoto = localStorage.getItem(STORAGE_KEY);
+
+        if (savedPhoto) {
+            profilePhoto.src = savedPhoto;
+            profilePhoto.style.display = "block";
+            defaultIcon.style.display = "none";
+            optionText.textContent = "Change Photo";
+            deleteButton.style.display = "block";
+        } else {
+            profilePhoto.src = "";
+            profilePhoto.style.display = "none";
+            defaultIcon.style.display = "block";
+            optionText.textContent = "Add Photo";
+            deleteButton.style.display = "none";
+        }
+    }
+
+    // Click profile photo to show/hide options
+    photoBox.addEventListener("click", function () {
+        photoMenu.classList.toggle("show");
+    });
+
+    // Add or change photo
+    changeButton.addEventListener("click", function () {
+        photoMenu.classList.remove("show");
+        photoInput.click();
+    });
+
+    photoInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please select a valid image.");
+            this.value = "";
+            return;
+        }
+
+        if (file.size > 3 * 1024 * 1024) {
+            alert("Please select an image smaller than 3 MB.");
+            this.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            try {
+                localStorage.setItem(STORAGE_KEY, event.target.result);
+                loadAdminPhoto();
+            } catch (error) {
+                alert("Photo could not be saved. Please select a smaller image.");
+            }
+
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    // Delete photo
+    deleteButton.addEventListener("click", function () {
+
+        if (confirm("Do you want to delete the admin photo?")) {
+            localStorage.removeItem(STORAGE_KEY);
+            photoInput.value = "";
+            loadAdminPhoto();
+        }
+
+        photoMenu.classList.remove("show");
+    });
+
+    // Hide menu when clicking outside
+    document.addEventListener("click", function (event) {
+
+        if (!photoBox.contains(event.target) &&
+            !photoMenu.contains(event.target)) {
+
+            photoMenu.classList.remove("show");
+        }
+
+    });
+
+    loadAdminPhoto();
+
+});
+
+</script>
+
+
+<!-- ================================================= -->
+<!-- STUDENT FILTER JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+function filterStudents() {
+
+    const searchInput =
+        document.getElementById("studentSearch");
+
+    const branchFilter =
+        document.getElementById("branchFilter");
+
+    const studentCount =
+        document.getElementById("studentCount");
+
+    const noStudentFound =
+        document.getElementById("noStudentFound");
+
+
+    const searchValue =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const selectedBranch =
+        branchFilter.value;
+
+
+    const students =
+        document.querySelectorAll(".student-card");
+
+
+    let visibleCount = 0;
+
+
+    students.forEach(function(student) {
+
+        const studentName =
+            student.dataset.name
+                .toLowerCase();
+
+
+        const rollNo =
+            student.dataset.roll
+                .toLowerCase();
+
+
+        const branch =
+            student.dataset.branch;
+
+
+        const searchMatch =
+            studentName.includes(searchValue) ||
+            rollNo.includes(searchValue);
+
+
+        const branchMatch =
+            selectedBranch === "all" ||
+            branch === selectedBranch;
+
+
+        if (searchMatch && branchMatch) {
+
+            student.style.display = "flex";
+
+            visibleCount++;
+
+        }
+        else {
+
+            student.style.display = "none";
+
+        }
+
+    });
+
+
+    studentCount.textContent =
+        visibleCount + " Students";
+
+
+    if (visibleCount === 0) {
+
+        noStudentFound.style.display =
+            "block";
+
+    }
+    else {
+
+        noStudentFound.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================================
+   INITIAL LOAD
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        filterStudents();
+
+    }
+);
+
+</script>
+
+
+<!-- ================================================= -->
+<!-- BOOTSTRAP JS -->
+<!-- ================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

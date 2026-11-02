@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scanner - Smart Library</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- QR Code Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+
+    <style>
+
+        /* ==============================
+           GENERAL
+        ============================== */
+
+        body {
+            background-color: #f4f7fb;
+            color: #182230;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .navbar {
+            min-height: 70px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+        }
+
+        .navbar-admin-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 8px 15px;
+        }
+
+        .navbar-admin-btn:hover {
+            color: white;
+            opacity: 0.85;
+        }
+
+
+        /* ==============================
+           PAGE CONTENT
+        ============================== */
+
+        .page-content {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 24px 30px;
+            box-sizing: border-box;
+        }
+
+
+        /* ==============================
+           PAGE HEADING
+        ============================== */
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #132b4f;
+            margin-bottom: 5px;
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: #526477;
+        }
+
+
+        /* ==============================
+           SCANNER CARD
+        ============================== */
+
+        .scanner-card {
+            background-color: white;
+            border: 1px solid #d5dce5;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .scanner-card-header {
+            padding: 18px 25px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .scanner-card-header h4 {
+            margin: 0;
+            font-size: 25px;
+            font-weight: 700;
+            color: #132b4f;
+        }
+
+        .scanner-card-header p {
+            margin: 5px 0 0;
+            color: #64748b;
+        }
+
+        .scanner-card-body {
+            padding: 25px;
+        }
+
+
+        /* ==============================
+           SECTION TITLE
+        ============================== */
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #132b4f;
+            margin-bottom: 15px;
+        }
+
+
+        /* ==============================
+           CAMERA SCANNER
+        ============================== */
+
+        #reader {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            border: 2px solid #0d6efd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f8fafc;
+        }
+
+        .camera-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+
+        /* ==============================
+           DIVIDER
+        ============================== */
+
+        .scanner-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .scanner-divider::before,
+        .scanner-divider::after {
+            content: "";
+            height: 1px;
+            background-color: #d6dde6;
+            flex: 1;
+        }
+
+        .scanner-divider span {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+
+        /* ==============================
+           UPLOAD BOX
+        ============================== */
+
+        .upload-box {
+            border: 2px dashed #0d6efd;
+            border-radius: 10px;
+            background-color: #f8fbff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .upload-icon {
+            font-size: 50px;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+
+        .upload-box h5 {
+            color: #132b4f;
+            font-weight: 700;
+        }
+
+        .upload-box p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        #qrImage {
+            max-width: 550px;
+            margin: auto;
+        }
+
+
+        /* ==============================
+           IMAGE PREVIEW
+        ============================== */
+
+        .image-preview-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 1px solid #dce3eb;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .image-preview-box h6 {
+            color: #132b4f;
+            font-weight: 700;
+        }
+
+        #qrPreview {
+            max-width: 320px;
+            max-height: 320px;
+            width: auto;
+            height: auto;
+            margin: 15px auto 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            display: block;
+        }
+
+
+        /* ==============================
+           SCAN RESULT
+        ============================== */
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 1px solid #dce3eb;
+            border-radius: 10px;
+        }
+
+        .result-box h5 {
+            color: #132b4f;
+            font-weight: 700;
+        }
+
+        .result-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0d6efd;
+            word-break: break-all;
+        }
+
+
+        /* ==============================
+           STATUS MESSAGE
+        ============================== */
+
+        #statusMessage {
+            display: none;
+            margin-top: 15px;
+        }
+
+
+        /* ==============================
+           BOOK DETAILS
+        ============================== */
+
+        .book-details {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border: 1px solid #dce3eb;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .book-details h5 {
+            color: #132b4f;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .book-info-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf0f3;
+        }
+
+        .book-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .book-info-label {
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .book-info-value {
+            color: #475569;
+        }
+
+
+        /* ==============================
+           ACTION BUTTONS
+        ============================== */
+
+        .book-actions {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+
+        /* ==============================
+           INSTRUCTIONS
+        ============================== */
+
+        .instruction-card {
+            margin-top: 25px;
+            background-color: white;
+            border: 1px solid #d5dce5;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .instruction-card h5 {
+            color: #132b4f;
+            font-weight: 700;
+        }
+
+        .instruction-card li {
+            margin-bottom: 10px;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            padding: 20px 0;
+        }
+
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 767px) {
+
+            .page-content {
+                padding: 18px 15px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .camera-buttons {
+                flex-direction: column;
+            }
+
+            .camera-buttons .btn {
+                width: 100%;
+            }
+
+            .book-info-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .scanner-card-body {
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     TOP BLUE NAVBAR
+============================== -->
+
+<nav class="navbar navbar-dark bg-primary shadow-sm">
+
+    <div class="container-fluid px-4">
+
+        <a
+            href="admin_dashboard.html"
+            class="navbar-brand fw-bold">
+
+            <i class="bi bi-book-half"></i>
+
+            Smart Library
+
+        </a>
+
+
+        <a
+            href="admin_profile.html"
+            class="navbar-admin-btn">
+
+            <i class="bi bi-person-circle"></i>
+
+            Admin
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==============================
+     DARK BLUE NAVIGATION
+============================== -->
+
+<script src="js/navigation.js"></script>
+
+
+<!-- ==============================
+     MAIN CONTENT
+============================== -->
+
+<main class="page-content">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="mb-4">
+
+        <h1 class="page-title">
+            Scanner
+        </h1>
+
+        <p class="page-subtitle">
+            Scan book QR codes using camera or upload a QR image
+        </p>
+
+    </div>
+
+
+    <!-- ==============================
+         SCANNER CARD
+    ============================== -->
+
+    <div class="scanner-card">
+
+
+        <!-- HEADER -->
+
+        <div class="scanner-card-header">
+
+            <h4>
+
+                <i class="bi bi-qr-code-scan"></i>
+
+                Book QR Scanner
+
+            </h4>
+
+            <p>
+                Scan a book QR code to view its library information.
+            </p>
+
+        </div>
+
+
+        <!-- BODY -->
+
+        <div class="scanner-card-body">
+
+
+            <!-- CAMERA -->
+
+            <div class="section-title">
+
+                <i class="bi bi-camera"></i>
+
+                Scan Using Camera
+
+            </div>
+
+
+            <div id="reader"></div>
+
+
+            <div class="camera-buttons">
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="startCameraScanner()">
+
+                    <i class="bi bi-camera"></i>
+
+                    Start Camera
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="stopCameraScanner()">
+
+                    <i class="bi bi-stop-circle"></i>
+
+                    Stop Camera
+
+                </button>
+
+            </div>
+
+
+            <!-- DIVIDER -->
+
+            <div class="scanner-divider">
+
+                <span>OR</span>
+
+            </div>
+
+
+            <!-- UPLOAD IMAGE -->
+
+            <div class="section-title">
+
+                <i class="bi bi-image"></i>
+
+                Scan From Saved Image
+
+            </div>
+
+
+            <div class="upload-box">
+
+                <div class="upload-icon">
+
+                    <i class="bi bi-cloud-arrow-up"></i>
+
+                </div>
+
+
+                <h5>
+                    Upload QR Code Image
+                </h5>
+
+
+                <p>
+                    Select a JPG, JPEG or PNG image containing a QR code.
+                </p>
+
+
+                <input
+                    type="file"
+                    id="qrImage"
+                    class="form-control"
+                    accept="image/png,image/jpeg,image/jpg"
+                    onchange="scanUploadedImage(this)">
+
+            </div>
+
+
+            <!-- IMAGE PREVIEW -->
+
+            <div
+                id="imagePreviewBox"
+                class="image-preview-box">
+
+                <h6>
+
+                    <i class="bi bi-eye"></i>
+
+                    Selected QR Image
+
+                </h6>
+
+
+                <img
+                    id="qrPreview"
+                    src=""
+                    alt="Selected QR Code">
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div
+                id="statusMessage"
+                class="alert"
+                role="alert">
+            </div>
+
+
+            <!-- SCAN RESULT -->
+
+            <div class="result-box">
+
+                <h5>
+
+                    <i class="bi bi-upc-scan"></i>
+
+                    Scan Result
+
+                </h5>
+
+
+                <hr>
+
+
+                <p class="mb-1">
+                    Scanned ISBN / QR Code:
+                </p>
+
+
+                <div
+                    id="scanResult"
+                    class="result-value">
+
+                    No code scanned yet.
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK DETAILS -->
+
+            <div
+                id="bookDetails"
+                class="book-details">
+
+
+                <h5>
+
+                    <i class="bi bi-book-half"></i>
+
+                    Book Information
+
+                </h5>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        Book Name
+                    </div>
+
+                    <div
+                        id="bookName"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        ISBN Number
+                    </div>
+
+                    <div
+                        id="bookISBN"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        Author
+                    </div>
+
+                    <div
+                        id="bookAuthor"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        Category
+                    </div>
+
+                    <div
+                        id="bookCategory"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        Shelf
+                    </div>
+
+                    <div
+                        id="bookShelf"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <div class="book-info-row">
+
+                    <div class="book-info-label">
+                        Available Copies
+                    </div>
+
+                    <div
+                        id="bookQuantity"
+                        class="book-info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+
+                <div class="book-actions">
+
+
+                    <button
+                        type="button"
+                        id="issueButton"
+                        class="btn btn-primary"
+                        onclick="goToIssueBook()">
+
+                        <i class="bi bi-bookmark-plus"></i>
+
+                        Issue Book
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="returnButton"
+                        class="btn btn-success"
+                        onclick="goToReturnBook()">
+
+                        <i class="bi bi-arrow-return-left"></i>
+
+                        Return Book
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="resetScanner()">
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Scan Another
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         INSTRUCTIONS
+    ============================== -->
+
+    <div class="instruction-card">
+
+        <div class="card-body p-4">
+
+            <h5>
+
+                <i class="bi bi-info-circle"></i>
+
+                How to Use the Scanner
+
+            </h5>
+
+
+            <ol class="mt-3">
+
+                <li>
+                    To scan using the camera,
+                    click <strong>Start Camera</strong>.
+                </li>
+
+
+                <li>
+                    If the browser asks for camera permission,
+                    click <strong>Allow</strong>.
+                </li>
+
+
+                <li>
+                    To scan a saved QR image,
+                    click <strong>Choose File</strong>.
+                </li>
+
+
+                <li>
+                    Select a
+                    <strong>JPG, JPEG or PNG</strong>
+                    image containing a QR code.
+                </li>
+
+
+                <li>
+                    The ISBN stored inside the QR code
+                    will be detected automatically.
+                </li>
+
+
+                <li>
+                    If the ISBN exists in the library records,
+                    the book information will be displayed.
+                </li>
+
+
+                <li>
+                    You can then select
+                    <strong>Issue Book</strong>
+                    or
+                    <strong>Return Book</strong>.
+                </li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="text-center text-muted">
+
+        © 2026 Smart Library Management System
+
+    </footer>
+
+
+</main>
+
+
+<!-- ==============================
+     SCANNER JAVASCRIPT
+============================== -->
+
+<script>
+
+/* ==============================
+   GLOBAL VARIABLES
+============================== */
+
+let cameraScanner = null;
+
+let scannerRunning = false;
+
+let currentISBN = "";
+
+
+/* ==============================
+   BOOK DATABASE
+============================== */
+
+const books = {
+
+    "9780070630921": {
+
+        name: "Java Programming",
+        isbn: "9780070630921",
+        author: "Herbert Schildt",
+        category: "Programming",
+        shelf: "A-01",
+        quantity: 29
+
+    },
+
+
+    "9780132126953": {
+
+        name: "Computer Networks",
+        isbn: "9780132126953",
+        author: "Andrew S. Tanenbaum",
+        category: "Networking",
+        shelf: "A-03",
+        quantity: 27
+
+    },
+
+
+    "9781449355739": {
+
+        name: "Python Programming",
+        isbn: "9781449355739",
+        author: "Mark Lutz",
+        category: "Programming",
+        shelf: "B-02",
+        quantity: 19
+
+    },
+
+
+    "9780073523323": {
+
+        name: "Database System Concepts",
+        isbn: "9780073523323",
+        author: "Korth",
+        category: "Database",
+        shelf: "B-04",
+        quantity: 8
+
+    },
+
+
+    "9780070495438": {
+
+        name: "Advanced Java Programming",
+        isbn: "9780070495438",
+        author: "Herbert Schildt",
+        category: "Advanced Programming",
+        shelf: "B-05",
+        quantity: 25
+
+    },
+
+
+    "9780133943030": {
+
+        name: "Software Engineering",
+        isbn: "9780133943030",
+        author: "Ian Sommerville",
+        category: "Software Engineering",
+        shelf: "B-06",
+        quantity: 20
+
+    }
+
+};
+
+
+/* ==============================
+   SHOW STATUS MESSAGE
+============================== */
+
+function showStatus(message, type) {
+
+    const status =
+        document.getElementById("statusMessage");
+
+    status.className =
+        "alert alert-" + type;
+
+    status.textContent =
+        message;
+
+    status.style.display =
+        "block";
+
+}
+
+
+/* ==============================
+   START CAMERA SCANNER
+============================== */
+
+function startCameraScanner() {
+
+    if (scannerRunning) {
+        return;
+    }
+
+
+    cameraScanner =
+        new Html5Qrcode("reader");
+
+
+    const config = {
+
+        fps: 10,
+
+        qrbox: {
+            width: 250,
+            height: 250
+        },
+
+        aspectRatio: 1.0
+
+    };
+
+
+    cameraScanner
+
+        .start(
+
+            {
+                facingMode: "environment"
+            },
+
+            config,
+
+            function(decodedText) {
+
+                handleScan(decodedText);
+
+                stopCameraScanner();
+
+            },
+
+            function(errorMessage) {
+
+                // Ignore continuous scanning errors.
+
+            }
+
+        )
+
+        .then(function() {
+
+            scannerRunning = true;
+
+            showStatus(
+                "Camera scanner started successfully.",
+                "success"
+            );
+
+        })
+
+        .catch(function(error) {
+
+            console.error(error);
+
+            showStatus(
+                "Unable to start the camera. Please allow camera permission.",
+                "danger"
+            );
+
+        });
+
+}
+
+
+/* ==============================
+   STOP CAMERA SCANNER
+============================== */
+
+function stopCameraScanner() {
+
+    if (!cameraScanner || !scannerRunning) {
+        return;
+    }
+
+
+    cameraScanner
+
+        .stop()
+
+        .then(function() {
+
+            scannerRunning = false;
+
+            console.log(
+                "Camera scanner stopped."
+            );
+
+        })
+
+        .catch(function(error) {
+
+            console.log(error);
+
+            scannerRunning = false;
+
+        });
+
+}
+
+
+/* ==============================
+   SCAN UPLOADED IMAGE
+============================== */
+
+function scanUploadedImage(input) {
+
+    if (
+        !input.files ||
+        input.files.length === 0
+    ) {
+        return;
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    if (!file.type.startsWith("image/")) {
+
+        showStatus(
+            "Please select a valid JPG, JPEG or PNG image.",
+            "danger"
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const preview =
+        document.getElementById("qrPreview");
+
+
+    const previewBox =
+        document.getElementById("imagePreviewBox");
+
+
+    preview.src =
+        URL.createObjectURL(file);
+
+
+    previewBox.style.display =
+        "block";
+
+
+    showStatus(
+        "QR image selected. Scanning...",
+        "info"
+    );
+
+
+    const imageScanner =
+        new Html5Qrcode("reader");
+
+
+    imageScanner
+
+        .scanFile(file, true)
+
+        .then(function(decodedText) {
+
+            console.log(
+                "QR Image Result:",
+                decodedText
+            );
+
+
+            handleScan(decodedText);
+
+
+            showStatus(
+                "QR code successfully scanned from the image.",
+                "success"
+            );
+
+
+            imageScanner
+
+                .clear()
+
+                .catch(function(error) {
+
+                    console.log(error);
+
+                });
+
+        })
+
+        .catch(function(error) {
+
+            console.log(
+                "Image scan error:",
+                error
+            );
+
+
+            showStatus(
+                "QR code could not be detected. Please select a clear QR image.",
+                "danger"
+            );
+
+
+            document.getElementById("scanResult")
+                .textContent =
+                "QR code not detected.";
+
+
+            imageScanner
+
+                .clear()
+
+                .catch(function(error) {
+
+                    console.log(error);
+
+                });
+
+        });
+
+}
+
+
+/* ==============================
+   HANDLE SCAN RESULT
+============================== */
+
+function handleScan(decodedText) {
+
+    let code =
+        decodedText
+            .trim()
+            .replace(/[-\s]/g, "");
+
+
+    currentISBN =
+        code;
+
+
+    document.getElementById("scanResult")
+        .textContent =
+        decodedText;
+
+
+    findBook(code);
+
+}
+
+
+/* ==============================
+   FIND BOOK
+============================== */
+
+function findBook(isbn) {
+
+    const book =
+        books[isbn];
+
+
+    const details =
+        document.getElementById("bookDetails");
+
+
+    details.style.display =
+        "block";
+
+
+    if (book) {
+
+        document.getElementById("bookName")
+            .textContent =
+            book.name;
+
+
+        document.getElementById("bookISBN")
+            .textContent =
+            book.isbn;
+
+
+        document.getElementById("bookAuthor")
+            .textContent =
+            book.author;
+
+
+        document.getElementById("bookCategory")
+            .textContent =
+            book.category;
+
+
+        document.getElementById("bookShelf")
+            .textContent =
+            book.shelf;
+
+
+        document.getElementById("bookQuantity")
+            .textContent =
+            book.quantity + " Copies";
+
+
+        showStatus(
+            "Book found successfully.",
+            "success"
+        );
+
+    }
+
+    else {
+
+        document.getElementById("bookName")
+            .textContent =
+            "Book Not Found";
+
+
+        document.getElementById("bookISBN")
+            .textContent =
+            isbn;
+
+
+        document.getElementById("bookAuthor")
+            .textContent =
+            "-";
+
+
+        document.getElementById("bookCategory")
+            .textContent =
+            "-";
+
+
+        document.getElementById("bookShelf")
+            .textContent =
+            "-";
+
+
+        document.getElementById("bookQuantity")
+            .textContent =
+            "No record found";
+
+
+        showStatus(
+            "QR code scanned, but this ISBN is not available in the library records.",
+            "warning"
+        );
+
+    }
+
+}
+
+
+/* ==============================
+   GO TO ISSUE BOOK
+============================== */
+
+function goToIssueBook() {
+
+    if (!currentISBN) {
+
+        showStatus(
+            "Please scan a book first.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "issue_book.html?isbn=" +
+        encodeURIComponent(currentISBN);
+
+}
+
+
+/* ==============================
+   GO TO RETURN BOOK
+============================== */
+
+function goToReturnBook() {
+
+    if (!currentISBN) {
+
+        showStatus(
+            "Please scan a book first.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "return_book.html?isbn=" +
+        encodeURIComponent(currentISBN);
+
+}
+
+
+/* ==============================
+   RESET SCANNER
+============================== */
+
+function resetScanner() {
+
+    stopCameraScanner();
+
+
+    currentISBN =
+        "";
+
+
+    document.getElementById("scanResult")
+        .textContent =
+        "No code scanned yet.";
+
+
+    document.getElementById("bookDetails")
+        .style.display =
+        "none";
+
+
+    document.getElementById("imagePreviewBox")
+        .style.display =
+        "none";
+
+
+    document.getElementById("statusMessage")
+        .style.display =
+        "none";
+
+
+    document.getElementById("qrImage")
+        .value =
+        "";
+
+
+    document.getElementById("qrPreview")
+        .src =
+        "";
+
+}
+
+</script>
+
+
+<!-- Bootstrap JavaScript -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

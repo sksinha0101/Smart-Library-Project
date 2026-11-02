@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile - Smart Library</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="admin_dashboard.html" class="logo">
+            <i class="bi bi-book-half"></i>
+            Smart Library
+        </a>
+
+        <a href="admin_profile.html" class="admin-btn">
+            <i class="bi bi-person-circle"></i>
+            Admin
+        </a>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="student-profile-page">
+
+        <a href="admin_profile.html" class="back-btn">
+            <i class="bi bi-arrow-left"></i>
+            Back to Student Profiles
+        </a>
+
+        <!-- ================= PROFILE ================= -->
+
+        <div class="profile-card">
+
+            <!-- Profile Header -->
+
+            <div class="profile-header">
+
+                <div class="student-photo">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div class="student-heading">
+
+                    <h1 id="studentName">Rahul Kumar</h1>
+
+                    <p>
+                        <strong>Roll No.:</strong>
+                        <span id="rollNo">2024-CSE-01</span>
+                    </p>
+
+                    <p>
+                        <strong>Branch:</strong>
+                        <span id="branch">CSE</span>
+                    </p>
+
+                    <span class="active-status">
+                        <i class="bi bi-check-circle-fill"></i>
+                        Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+
+            <div class="section">
+
+                <h2>
+                    <i class="bi bi-person-vcard"></i>
+                    Personal Information
+                </h2>
+
+                <div class="info-grid">
+
+                    <div class="info-box">
+                        <label>Full Name</label>
+                        <strong id="fullName">Rahul Kumar</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Roll No.</label>
+                        <strong id="roll">2024-CSE-01</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Branch</label>
+                        <strong id="studentBranch">CSE</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Semester</label>
+                        <strong id="semester">5th Semester</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Email</label>
+                        <strong id="email">rahul.kumar@example.com</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Phone Number</label>
+                        <strong id="phone">+91 90000 10001</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Date of Birth</label>
+                        <strong id="dob">12-03-2006</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Gender</label>
+                        <strong id="gender">Male</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Address</label>
+                        <strong id="address">Muzaffarpur, Bihar</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Parent / Guardian</label>
+                        <strong id="guardian">Suresh Kumar</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Guardian Phone</label>
+                        <strong id="guardianPhone">+91 90000 20001</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <label>Account Status</label>
+                        <strong class="green-text">Active</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= LIBRARY SUMMARY ================= -->
+
+            <div class="section">
+
+                <h2>
+                    <i class="bi bi-bar-chart-fill"></i>
+                    Library Summary
+                </h2>
+
+                <div class="stats-grid">
+
+                    <div class="stat-box">
+                        <strong id="booksIssued">2</strong>
+                        <span>Books Issued</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong id="booksReturned">3</strong>
+                        <span>Books Returned</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong id="overdueBooks">0</strong>
+                        <span>Overdue Books</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong>Active</strong>
+                        <span>Account Status</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ISSUED BOOK ================= -->
+
+            <div class="section">
+
+                <h2>
+                    <i class="bi bi-book"></i>
+                    Currently Issued Books
+                </h2>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Sl.no.</th>
+                                <th>Book Name</th>
+                                <th>ISBN</th>
+                                <th>Issue Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="bookTable">
+
+                            <tr>
+                                <td>1</td>
+
+                                <td id="bookName">Java Programming</td>
+
+                                <td id="isbn">9780070630921</td>
+
+                                <td id="issueDate">20-06-2026</td>
+
+                                <td id="dueDate">27-07-2026</td>
+
+                                <td>
+                                    <span class="issued">Issued</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FOOTER INFO ================= -->
+
+            <div class="profile-footer">
+
+                <span>
+                    <i class="bi bi-clock-history"></i>
+                    Last Updated: 04-09-2026
+                </span>
+
+                <span>
+                    Smart Library Management System
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+    /* =====================================================
+       STUDENT DATABASE
+       EXACTLY 55 STUDENTS AS PER ADMIN PROFILE
+       ===================================================== */
+
+    const studentList = {
+
+        /* ================= CSE ================= */
+
+        CSE: [
+            "Rahul Kumar",
+            "Aman Kumar",
+            "Priya Kumari",
+            "Rohit Kumar",
+            "Neha Kumari",
+            "Arnav Kumar",
+            "Simran Kumari",
+            "Mohit Kumar",
+            "Ankit Kumar",
+            "Kajal Kumari",
+            "Vivek Kumar",
+            "Shivam Kumar",
+            "Komal Kumari",
+            "Aditya Kumar"
+        ],
+
+        /* ================= ELE ================= */
+
+        ELE: [
+            "Ravi Kumar",
+            "Sneha Kumari",
+            "Rajeev Kumar",
+            "Anjali Kumari",
+            "Pankaj Kumar",
+            "Kavya Kumari",
+            "Abhishek Kumar",
+            "Swati Kumari",
+            "Deepak Kumar",
+            "Shreya Kumari",
+            "Rohit Kumar",
+            "Muskan Kumari",
+            "Vishal Kumar",
+            "Nisha Kumari"
+        ],
+
+        /* ================= EE ================= */
+
+        EE: [
+            "Karan Kumar",
+            "Neha Kumari",
+            "Amit Kumar",
+            "Pooja Kumari",
+            "Saurav Kumar",
+            "Manish Kumar",
+            "Sonali Kumari",
+            "Rakesh Kumar",
+            "Priyanka Kumari",
+            "Vivek Kumar",
+            "Shubham Kumar",
+            "Riya Kumari",
+            "Ajay Kumar",
+            "Ritu Kumari"
+        ],
+
+        /* ================= ME ================= */
+
+        ME: [
+            "Vikas Kumar",
+            "Raunak Kumar",
+            "Sonu Kumar",
+            "Ankit Kumar",
+            "Rakesh Kumar",
+            "Shivani Kumari",
+            "Manoj Kumar",
+            "Akash Kumar",
+            "Jyoti Kumari",
+            "Abhishek Kumar",
+            "Shubham Kumar",
+            "Neeraj Kumar",
+            "Preeti Kumari"
+        ]
+
+    };
+
+
+    /* =====================================================
+       STUDENT DETAILS
+       ===================================================== */
+
+    const students = {};
+
+    const bookNames = [
+        "Java Programming",
+        "Database Management System",
+        "Python Programming",
+        "Computer Networks",
+        "Operating System",
+        "Data Structures and Algorithms",
+        "Software Engineering",
+        "Artificial Intelligence",
+        "Cloud Computing",
+        "Engineering Mechanics",
+        "Electrical Machines",
+        "Power Systems",
+        "Digital Electronics",
+        "Thermodynamics"
+    ];
+
+    const bookISBN = [
+        "9780070630921",
+        "9780073523323",
+        "9781449355739",
+        "9780132126953",
+        "9781118063330",
+        "9780132576277",
+        "9780133943030",
+        "9780134610993",
+        "9781118868959",
+        "9780070702096",
+        "9780070702089",
+        "9780073529573",
+        "9780071077865",
+        "9780071077872"
+    ];
+
+    const addresses = [
+        "Muzaffarpur, Bihar",
+        "Vaishali, Bihar",
+        "Patna, Bihar",
+        "Hajipur, Bihar",
+        "Darbhanga, Bihar",
+        "Samastipur, Bihar"
+    ];
+
+    let studentNumber = 0;
+
+    Object.keys(studentList).forEach(branch => {
+
+        studentList[branch].forEach((name, index) => {
+
+            studentNumber++;
+
+            const rollNumber =
+                `2024-${branch}-${String(index + 1).padStart(2, "0")}`;
+
+            const firstName = name
+                .split(" ")[0]
+                .toLowerCase();
+
+            const lastName = name
+                .split(" ")[1]
+                .toLowerCase();
+
+            const gender = name.endsWith("Kumari")
+                ? "Female"
+                : "Male";
+
+            students[rollNumber] = {
+
+                name: name,
+
+                branch: branch,
+
+                semester: "5th Semester",
+
+                email: `${firstName}.${lastName}@example.com`,
+
+                phone: `+91 90000 ${String(10000 + studentNumber).slice(-5)}`,
+
+                dob: "12-03-2006",
+
+                gender: gender,
+
+                address: addresses[(studentNumber - 1) % addresses.length],
+
+                guardian: "Suresh Kumar",
+
+                guardianPhone: `+91 90000 ${String(20000 + studentNumber).slice(-5)}`,
+
+                issued: studentNumber % 3,
+
+                returned: 2 + (studentNumber % 3),
+
+                overdue: 0,
+
+                book: bookNames[(studentNumber - 1) % bookNames.length],
+
+                isbn: bookISBN[(studentNumber - 1) % bookISBN.length],
+
+                issueDate: "20-08-2026",
+
+                dueDate: "20-09-2026"
+
+            };
+
+        });
+
+    });
+
+
+    /* =====================================================
+       GET ROLL NUMBER FROM URL
+       ===================================================== */
+
+    const params = new URLSearchParams(window.location.search);
+
+    let rollNo = params.get("roll");
+
+    if (rollNo) {
+        rollNo = rollNo.trim().toUpperCase();
+    }
+
+
+    /* =====================================================
+       FIND STUDENT
+       ===================================================== */
+
+    const student = students[rollNo];
+
+
+    /* =====================================================
+       DISPLAY STUDENT INFORMATION
+       ===================================================== */
+
+    if (student) {
+
+        /* Profile Header */
+
+        document.getElementById("studentName").textContent =
+            student.name;
+
+        document.getElementById("rollNo").textContent =
+            rollNo;
+
+        document.getElementById("branch").textContent =
+            student.branch;
+
+
+        /* Personal Information */
+
+        document.getElementById("fullName").textContent =
+            student.name;
+
+        document.getElementById("roll").textContent =
+            rollNo;
+
+        document.getElementById("studentBranch").textContent =
+            student.branch;
+
+        document.getElementById("semester").textContent =
+            student.semester;
+
+        document.getElementById("email").textContent =
+            student.email;
+
+        document.getElementById("phone").textContent =
+            student.phone;
+
+        document.getElementById("dob").textContent =
+            student.dob;
+
+        document.getElementById("gender").textContent =
+            student.gender;
+
+        document.getElementById("address").textContent =
+            student.address;
+
+        document.getElementById("guardian").textContent =
+            student.guardian;
+
+        document.getElementById("guardianPhone").textContent =
+            student.guardianPhone;
+
+
+        /* Library Summary */
+
+        document.getElementById("booksIssued").textContent =
+            student.issued;
+
+        document.getElementById("booksReturned").textContent =
+            student.returned;
+
+        document.getElementById("overdueBooks").textContent =
+            student.overdue;
+
+
+        /* Currently Issued Book */
+
+        document.getElementById("bookName").textContent =
+            student.book;
+
+        document.getElementById("isbn").textContent =
+            student.isbn;
+
+        document.getElementById("issueDate").textContent =
+            student.issueDate;
+
+        document.getElementById("dueDate").textContent =
+            student.dueDate;
+
+
+        /* Browser Tab Title */
+
+        document.title =
+            student.name + " - Student Profile";
+
+    }
+
+
+    /* =====================================================
+       STUDENT NOT FOUND
+       ===================================================== */
+
+    else {
+
+        document.getElementById("studentName").textContent =
+            "Student Not Found";
+
+        document.getElementById("rollNo").textContent =
+            rollNo || "No Roll No.";
+
+        document.getElementById("branch").textContent =
+            "-";
+
+        document.getElementById("fullName").textContent =
+            "Student not found";
+
+        document.getElementById("roll").textContent =
+            rollNo || "-";
+
+        document.getElementById("studentBranch").textContent =
+            "-";
+
+        document.getElementById("semester").textContent =
+            "-";
+
+        document.getElementById("email").textContent =
+            "-";
+
+        document.getElementById("phone").textContent =
+            "-";
+
+        document.getElementById("dob").textContent =
+            "-";
+
+        document.getElementById("gender").textContent =
+            "-";
+
+        document.getElementById("address").textContent =
+            "-";
+
+        document.getElementById("guardian").textContent =
+            "-";
+
+        document.getElementById("guardianPhone").textContent =
+            "-";
+
+        document.getElementById("booksIssued").textContent =
+            "0";
+
+        document.getElementById("booksReturned").textContent =
+            "0";
+
+        document.getElementById("overdueBooks").textContent =
+            "0";
+
+        document.getElementById("bookName").textContent =
+            "No book record";
+
+        document.getElementById("isbn").textContent =
+            "-";
+
+        document.getElementById("issueDate").textContent =
+            "-";
+
+        document.getElementById("dueDate").textContent =
+            "-";
+
+        document.title =
+            "Student Not Found - Smart Library";
+
+    }
+
+
+    /* =====================================================
+       TOTAL STUDENT COUNT CHECK
+       ===================================================== */
+
+    console.log(
+        "Total Students:",
+        Object.keys(students).length
+    );
+
+    </script>
+
+</body>
+</html>

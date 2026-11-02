@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Students - Smart Library</title>
+
+    <!-- =====================================================
+         BOOTSTRAP CSS
+         ===================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- =====================================================
+         CUSTOM CSS
+         ===================================================== -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- =====================================================
+         BRANCH FILTER SMALL CSS
+         ===================================================== -->
+
+    <style>
+
+        /* =========================================
+           STUDENT FILTER AREA
+           ========================================= */
+
+        .student-filter-area {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-left: auto;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        /* Branch label */
+
+        .branch-filter-label {
+
+            font-weight: 600;
+
+            color: #172b4d;
+
+            margin: 0;
+
+        }
+
+
+        /* Branch select */
+
+        .branch-filter-select {
+
+            width: 180px;
+
+            height: 38px;
+
+            border: 1px solid #d9e1ec;
+
+            border-radius: 8px;
+
+            padding: 6px 12px;
+
+            font-size: 14px;
+
+            background-color: #ffffff;
+
+            color: #172b4d;
+
+            cursor: pointer;
+
+            outline: none;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .branch-filter-select:hover {
+
+            border-color: #0d6efd;
+
+        }
+
+
+        .branch-filter-select:focus {
+
+            border-color: #0d6efd;
+
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.12);
+
+        }
+
+
+        /* Student count */
+
+        .student-count-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 110px;
+
+            height: 38px;
+
+            padding: 0 12px;
+
+            border-radius: 8px;
+
+            background: #f1f5f9;
+
+            color: #172b4d;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* Header layout */
+
+        .students-card-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+
+            .students-card-header {
+
+                align-items: flex-start;
+
+            }
+
+
+            .student-filter-area {
+
+                width: 100%;
+
+                margin-left: 0;
+
+            }
+
+
+            .branch-filter-select {
+
+                width: 170px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP BLUE NAVBAR
+     ===================================================== -->
+
+<nav class="navbar navbar-dark bg-primary shadow-sm">
+
+    <div class="container-fluid">
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand fw-bold"
+           href="admin_dashboard.html">
+
+            <i class="bi bi-book-half"></i>
+
+            Smart Library
+
+        </a>
+
+
+        <!-- Admin -->
+
+        <a href="admin_profile.html"
+           class="navbar-admin-btn">
+
+            <i class="bi bi-person-circle"></i>
+
+            Admin
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     COMMON DARK BLUE NAVIGATION
+     ===================================================== -->
+
+<script src="js/navigation.js?v=2"></script>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="page-content">
+
+
+    <!-- =================================================
+         PAGE HEADING
+         ================================================= -->
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+
+            <i class="bi bi-people me-2"></i>
+
+            Student Records
+
+        </h2>
+
+
+        <p class="text-muted">
+
+            Manage registered students branch-wise
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STUDENT RECORD CARD
+         ================================================= -->
+
+    <div class="card shadow-sm">
+
+
+        <!-- =================================================
+             CARD HEADER
+             ================================================= -->
+
+        <div class="card-header bg-white">
+
+            <div class="students-card-header">
+
+
+                <!-- Registered Students -->
+
+                <h5 class="fw-bold mb-0">
+
+                    <i class="bi bi-person-lines-fill me-2"></i>
+
+                    Registered Students
+
+                </h5>
+
+
+
+                <!-- =================================================
+                     FILTER AREA
+                     ================================================= -->
+
+                <div class="student-filter-area">
+
+
+                    <!-- ===============================
+                         SORT BY
+                         =============================== -->
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <label
+                            for="sortDropdown"
+                            class="branch-filter-label">
+
+                            Sort By
+
+                        </label>
+
+
+                        <select
+                            id="sortDropdown"
+                            class="branch-filter-select">
+
+                            <option value="select">
+
+                                Select
+
+                            </option>
+
+                            <option value="name">
+
+                                By Name
+
+                            </option>
+
+                            <option value="roll">
+
+                                By Roll Number
+
+                            </option>
+
+                            <option value="branch">
+
+                                By Branch
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ===============================
+                         BRANCH FILTER
+                         =============================== -->
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <label
+                            for="branchFilter"
+                            class="branch-filter-label">
+
+                            Branch
+
+                        </label>
+
+
+                        <select
+                            id="branchFilter"
+                            class="branch-filter-select">
+
+                            <option value="all">
+
+                                All Branches
+
+                            </option>
+
+                            <option value="CSE">
+
+                                CSE
+
+                            </option>
+
+                            <option value="ELE">
+
+                                ELE
+
+                            </option>
+
+                            <option value="EE">
+
+                                EE
+
+                            </option>
+
+                            <option value="ME">
+
+                                ME
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ===============================
+                         STUDENT COUNT
+                         =============================== -->
+
+                    <span
+                        class="student-count-badge"
+                        id="studentCount">
+
+                        55 Students
+
+                    </span>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CARD BODY
+             ================================================= -->
+
+        <div class="card-body">
+
+
+            <div class="table-responsive">
+
+
+                <!-- =================================================
+                     STUDENT TABLE
+                     ================================================= -->
+
+                <table
+                    class="table table-hover align-middle"
+                    id="studentsTable">
+
+
+                    <!-- =================================================
+                         TABLE HEADER
+                         ================================================= -->
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>
+                                Sl.no.
+                            </th>
+
+                            <th>
+                                Roll No.
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Branch
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Books Issued
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <!-- =================================================
+                         TABLE BODY
+                         ================================================= -->
+
+                    <tbody>
+
+
+                        <!-- =========================
+                             CSE STUDENTS
+                             ========================= -->
+
+                        <tr>
+                            <td>1</td>
+                            <td>2024-CSE-01</td>
+                            <td>Rahul Kumar</td>
+                            <td>CSE</td>
+                            <td>rahul@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>2024-CSE-02</td>
+                            <td>Aman Kumar</td>
+                            <td>CSE</td>
+                            <td>aman@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>2024-CSE-03</td>
+                            <td>Priya Kumari</td>
+                            <td>CSE</td>
+                            <td>priya@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>2024-CSE-04</td>
+                            <td>Rohit Kumar</td>
+                            <td>CSE</td>
+                            <td>rohit@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>2024-CSE-05</td>
+                            <td>Neha Kumari</td>
+                            <td>CSE</td>
+                            <td>neha@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>2024-CSE-06</td>
+                            <td>Arnav Kumar</td>
+                            <td>CSE</td>
+                            <td>arnav@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td>2024-CSE-07</td>
+                            <td>Simran Kumari</td>
+                            <td>CSE</td>
+                            <td>simran@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+                            <td>2024-CSE-08</td>
+                            <td>Mohit Kumar</td>
+                            <td>CSE</td>
+                            <td>mohit@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td>2024-CSE-09</td>
+                            <td>Ankit Kumar</td>
+                            <td>CSE</td>
+                            <td>ankit@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>10</td>
+                            <td>2024-CSE-10</td>
+                            <td>Kajal Kumari</td>
+                            <td>CSE</td>
+                            <td>kajal@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>11</td>
+                            <td>2024-CSE-11</td>
+                            <td>Vivek Kumar</td>
+                            <td>CSE</td>
+                            <td>vivek@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>12</td>
+                            <td>2024-CSE-12</td>
+                            <td>Shivam Kumar</td>
+                            <td>CSE</td>
+                            <td>shivam@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>13</td>
+                            <td>2024-CSE-13</td>
+                            <td>Komal Kumari</td>
+                            <td>CSE</td>
+                            <td>komal@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>14</td>
+                            <td>2024-CSE-14</td>
+                            <td>Aditya Kumar</td>
+                            <td>CSE</td>
+                            <td>aditya@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+
+
+                        <!-- =========================
+                             ELE STUDENTS
+                             ========================= -->
+
+                        <tr>
+                            <td>15</td>
+                            <td>2024-ELE-01</td>
+                            <td>Ravi Kumar</td>
+                            <td>ELE</td>
+                            <td>ravi@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>16</td>
+                            <td>2024-ELE-02</td>
+                            <td>Sneha Kumari</td>
+                            <td>ELE</td>
+                            <td>sneha@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>17</td>
+                            <td>2024-ELE-03</td>
+                            <td>Rajeev Kumar</td>
+                            <td>ELE</td>
+                            <td>rajeev@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>18</td>
+                            <td>2024-ELE-04</td>
+                            <td>Anjali Kumari</td>
+                            <td>ELE</td>
+                            <td>anjali@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>19</td>
+                            <td>2024-ELE-05</td>
+                            <td>Pankaj Kumar</td>
+                            <td>ELE</td>
+                            <td>pankaj@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>20</td>
+                            <td>2024-ELE-06</td>
+                            <td>Kavya Kumari</td>
+                            <td>ELE</td>
+                            <td>kavya@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>21</td>
+                            <td>2024-ELE-07</td>
+                            <td>Abhishek Kumar</td>
+                            <td>ELE</td>
+                            <td>abhishek@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>22</td>
+                            <td>2024-ELE-08</td>
+                            <td>Swati Kumari</td>
+                            <td>ELE</td>
+                            <td>swati@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>23</td>
+                            <td>2024-ELE-09</td>
+                            <td>Deepak Kumar</td>
+                            <td>ELE</td>
+                            <td>deepak@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>24</td>
+                            <td>2024-ELE-10</td>
+                            <td>Shreya Kumari</td>
+                            <td>ELE</td>
+                            <td>shreya@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>25</td>
+                            <td>2024-ELE-11</td>
+                            <td>Rohit Kumar</td>
+                            <td>ELE</td>
+                            <td>rohit.ele@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>26</td>
+                            <td>2024-ELE-12</td>
+                            <td>Muskan Kumari</td>
+                            <td>ELE</td>
+                            <td>muskan@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>27</td>
+                            <td>2024-ELE-13</td>
+                            <td>Vishal Kumar</td>
+                            <td>ELE</td>
+                            <td>vishal@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>28</td>
+                            <td>2024-ELE-14</td>
+                            <td>Nisha Kumari</td>
+                            <td>ELE</td>
+                            <td>nisha@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+
+
+                        <!-- =========================
+                             EE STUDENTS
+                             ========================= -->
+
+                        <tr>
+                            <td>29</td>
+                            <td>2024-EE-01</td>
+                            <td>Karan Kumar</td>
+                            <td>EE</td>
+                            <td>karan@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>30</td>
+                            <td>2024-EE-02</td>
+                            <td>Neha Kumari</td>
+                            <td>EE</td>
+                            <td>neha.ee@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>31</td>
+                            <td>2024-EE-03</td>
+                            <td>Amit Kumar</td>
+                            <td>EE</td>
+                            <td>amit@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>32</td>
+                            <td>2024-EE-04</td>
+                            <td>Pooja Kumari</td>
+                            <td>EE</td>
+                            <td>pooja@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>33</td>
+                            <td>2024-EE-05</td>
+                            <td>Saurav Kumar</td>
+                            <td>EE</td>
+                            <td>saurav@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>34</td>
+                            <td>2024-EE-06</td>
+                            <td>Manish Kumar</td>
+                            <td>EE</td>
+                            <td>manish@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>35</td>
+                            <td>2024-EE-07</td>
+                            <td>Sonali Kumari</td>
+                            <td>EE</td>
+                            <td>sonali@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>36</td>
+                            <td>2024-EE-08</td>
+                            <td>Rakesh Kumar</td>
+                            <td>EE</td>
+                            <td>rakesh@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>37</td>
+                            <td>2024-EE-09</td>
+                            <td>Priyanka Kumari</td>
+                            <td>EE</td>
+                            <td>priyanka@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>38</td>
+                            <td>2024-EE-10</td>
+                            <td>Vivek Kumar</td>
+                            <td>EE</td>
+                            <td>vivek.ee@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>39</td>
+                            <td>2024-EE-11</td>
+                            <td>Shubham Kumar</td>
+                            <td>EE</td>
+                            <td>shubham@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>40</td>
+                            <td>2024-EE-12</td>
+                            <td>Riya Kumari</td>
+                            <td>EE</td>
+                            <td>riya@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>41</td>
+                            <td>2024-EE-13</td>
+                            <td>Ajay Kumar</td>
+                            <td>EE</td>
+                            <td>ajay@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>42</td>
+                            <td>2024-EE-14</td>
+                            <td>Ritu Kumari</td>
+                            <td>EE</td>
+                            <td>ritu@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+
+
+                        <!-- =========================
+                             ME STUDENTS
+                             ========================= -->
+
+                        <tr>
+                            <td>43</td>
+                            <td>2024-ME-01</td>
+                            <td>Vikas Kumar</td>
+                            <td>ME</td>
+                            <td>vikas.me@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>44</td>
+                            <td>2024-ME-02</td>
+                            <td>Raunak Kumar</td>
+                            <td>ME</td>
+                            <td>raunak@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>45</td>
+                            <td>2024-ME-03</td>
+                            <td>Sonu Kumar</td>
+                            <td>ME</td>
+                            <td>sonu@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>46</td>
+                            <td>2024-ME-04</td>
+                            <td>Ankit Kumar</td>
+                            <td>ME</td>
+                            <td>ankit.me@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>47</td>
+                            <td>2024-ME-05</td>
+                            <td>Rakesh Kumar</td>
+                            <td>ME</td>
+                            <td>rakesh.me@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>48</td>
+                            <td>2024-ME-06</td>
+                            <td>Shivani Kumari</td>
+                            <td>ME</td>
+                            <td>shivani@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>49</td>
+                            <td>2024-ME-07</td>
+                            <td>Manoj Kumar</td>
+                            <td>ME</td>
+                            <td>manoj@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>50</td>
+                            <td>2024-ME-08</td>
+                            <td>Akash Kumar</td>
+                            <td>ME</td>
+                            <td>akash@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>51</td>
+                            <td>2024-ME-09</td>
+                            <td>Jyoti Kumari</td>
+                            <td>ME</td>
+                            <td>jyoti@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>52</td>
+                            <td>2024-ME-10</td>
+                            <td>Abhishek Kumar</td>
+                            <td>ME</td>
+                            <td>abhishek.me@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>53</td>
+                            <td>2024-ME-11</td>
+                            <td>Shubham Kumar</td>
+                            <td>ME</td>
+                            <td>shubham.me@gmail.com</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>54</td>
+                            <td>2024-ME-12</td>
+                            <td>Neeraj Kumar</td>
+                            <td>ME</td>
+                            <td>neeraj@gmail.com</td>
+                            <td>2</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>55</td>
+                            <td>2024-ME-13</td>
+                            <td>Preeti Kumari</td>
+                            <td>ME</td>
+                            <td>preeti@gmail.com</td>
+                            <td>1</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer class="text-center text-muted mt-4">
+
+        <small>
+
+            © 2026 Smart Library Management System
+
+        </small>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     BOOTSTRAP JAVASCRIPT
+     ===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- =====================================================
+     STUDENT SORTING + BRANCH FILTER JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =================================================
+       GET ELEMENTS
+       ================================================= */
+
+    const sortDropdown =
+        document.getElementById("sortDropdown");
+
+
+    const branchFilter =
+        document.getElementById("branchFilter");
+
+
+    const studentCount =
+        document.getElementById("studentCount");
+
+
+    const table =
+        document.getElementById("studentsTable");
+
+
+    const tbody =
+        table.querySelector("tbody");
+
+
+
+    /* =================================================
+       SORT DROPDOWN
+       ================================================= */
+
+    sortDropdown.addEventListener("change", function () {
+
+        const sortType = this.value;
+
+
+        if (sortType === "select") {
+
+            return;
+
+        }
+
+
+        sortStudentTable(sortType);
+
+    });
+
+
+
+    /* =================================================
+       BRANCH FILTER
+       ================================================= */
+
+    branchFilter.addEventListener("change", function () {
+
+        filterStudentsByBranch();
+
+    });
+
+
+
+    /* =================================================
+       SORT STUDENT TABLE
+       ================================================= */
+
+    function sortStudentTable(type) {
+
+
+        /* Get all rows */
+
+        const rows =
+            Array.from(
+                tbody.querySelectorAll("tr")
+            );
+
+
+        /* =================================================
+           SORT ROWS
+           ================================================= */
+
+        rows.sort(function (rowA, rowB) {
+
+
+            let valueA = "";
+
+            let valueB = "";
+
+
+
+            /* =============================================
+               BY NAME
+               Student Name = Column 3
+               ============================================= */
+
+            if (type === "name") {
+
+                valueA =
+                    rowA.cells[2]
+                        .textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                valueB =
+                    rowB.cells[2]
+                        .textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                return valueA.localeCompare(valueB);
+
+            }
+
+
+
+            /* =============================================
+               BY ROLL NUMBER
+               Roll Number = Column 2
+               ============================================= */
+
+            if (type === "roll") {
+
+                valueA =
+                    rowA.cells[1]
+                        .textContent
+                        .trim();
+
+
+                valueB =
+                    rowB.cells[1]
+                        .textContent
+                        .trim();
+
+
+                return valueA.localeCompare(
+                    valueB,
+                    undefined,
+                    {
+                        numeric: true
+                    }
+                );
+
+            }
+
+
+
+            /* =============================================
+               BY BRANCH
+               Branch = Column 4
+               ============================================= */
+
+            if (type === "branch") {
+
+                valueA =
+                    rowA.cells[3]
+                        .textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                valueB =
+                    rowB.cells[3]
+                        .textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                return valueA.localeCompare(valueB);
+
+            }
+
+
+            return 0;
+
+        });
+
+
+
+        /* =================================================
+           PUT SORTED ROWS BACK
+           ================================================= */
+
+        rows.forEach(function (row) {
+
+            tbody.appendChild(row);
+
+        });
+
+
+
+        /* =================================================
+           APPLY SERIAL NUMBERS
+           ================================================= */
+
+        updateSerialNumbers();
+
+
+        /* =================================================
+           APPLY BRANCH FILTER AGAIN
+           ================================================= */
+
+        filterStudentsByBranch();
+
+    }
+
+
+
+    /* =================================================
+       FILTER STUDENTS BY BRANCH
+       ================================================= */
+
+    function filterStudentsByBranch() {
+
+
+        const selectedBranch =
+            branchFilter.value;
+
+
+        const rows =
+            Array.from(
+                tbody.querySelectorAll("tr")
+            );
+
+
+        let visibleCount = 0;
+
+
+
+        rows.forEach(function (row) {
+
+
+            /* Branch is column 4 */
+
+            const branch =
+                row.cells[3]
+                    .textContent
+                    .trim()
+                    .toUpperCase();
+
+
+            /* =========================================
+               SHOW ALL BRANCHES
+               ========================================= */
+
+            if (
+                selectedBranch === "all" ||
+                branch === selectedBranch
+            ) {
+
+                row.style.display = "";
+
+                visibleCount++;
+
+            }
+
+
+            /* =========================================
+               HIDE NON-MATCHING BRANCH
+               ========================================= */
+
+            else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+
+
+        /* =================================================
+           UPDATE COUNT
+           ================================================= */
+
+        updateStudentCount(visibleCount);
+
+
+        /* =================================================
+           UPDATE SERIAL NUMBER
+           ================================================= */
+
+        updateSerialNumbers();
+
+    }
+
+
+
+    /* =================================================
+       UPDATE SERIAL NUMBERS
+       ================================================= */
+
+    function updateSerialNumbers() {
+
+
+        const rows =
+            Array.from(
+                tbody.querySelectorAll("tr")
+            );
+
+
+        let serialNumber = 1;
+
+
+        rows.forEach(function (row) {
+
+
+            /* Only visible rows */
+
+            if (row.style.display !== "none") {
+
+                row.cells[0].textContent =
+                    serialNumber;
+
+                serialNumber++;
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =================================================
+       UPDATE STUDENT COUNT
+       ================================================= */
+
+    function updateStudentCount(count) {
+
+
+        if (count === 1) {
+
+            studentCount.textContent =
+                "1 Student";
+
+        }
+
+        else {
+
+            studentCount.textContent =
+                count + " Students";
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       INITIAL COUNT
+       ================================================= */
+
+    filterStudentsByBranch();
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>
