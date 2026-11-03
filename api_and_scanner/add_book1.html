@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Book - Smart Library</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =====================================================
+           BARCODE SCANNER MODAL STYLES
+        ====================================================== */
+        #qr-reader {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            min-height: 80px;
+            background: #000;
+        }
+
+        #qr-reader video {
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        #qr-reader__scan_region {
+            position: relative;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold" href="admin_dashboard.html">
+                <i class="bi bi-book-half"></i>
+                Smart Library
+            </a>
+
+            <a href="admin_profile.html"
+           class="navbar-admin-btn">
+
+            <i class="bi bi-person-circle"></i>
+
+            Admin
+
+        </a>
+
+        </div>
+
+    </nav>
+    <script src="js/navigation.js?v=2"></script>
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="page-content">
+
+                <!-- Page Heading -->
+
+                <div class="mb-4">
+
+                    <h2 class="fw-bold">
+                        Add Book
+                    </h2>
+
+                    <p class="text-muted">
+                        Add a new book to the library
+                    </p>
+
+                </div>
+
+
+                <!-- ================= ADD BOOK FORM ================= -->
+
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header bg-white">
+
+                        <h5 class="fw-bold mb-0">
+
+                            <i class="bi bi-book"></i>
+
+                            Book Information
+
+                        </h5>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <form id="addBookForm">
+
+                            <div class="row g-3">
+
+                                <!-- ISBN -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label fw-semibold">
+                                        ISBN
+                                    </label>
+
+                                    <input type="text"
+                                    id="isbn"
+                                    name="isbn"
+                                    class="form-control"
+                                    placeholder="Enter ISBN Number"
+                                    required>
+
+                                </div>
+
+
+                                <!-- Book Name -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label fw-semibold">
+                                        Book Name
+                                    </label>
+
+                                    <input type="text"
+                                    id="title"
+                                    name="title"
+                                    class="form-control"
+                                    placeholder="Enter Book Name"
+                                    required>
+
+                                </div>
+
+
+                                <!-- Author -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label fw-semibold">
+                                        Author
+                                    </label>
+
+                                    <input type="text"
+                                    id="author"
+                                    name="author"
+                                    class="form-control"
+                                    placeholder="Enter Author Name"
+                                    required>
+
+                                </div>
+
+
+                                <!-- Category -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label fw-semibold">
+                                        Category
+                                    </label>
+
+                                   <select id="category" name="category" class="form-select" required>
+
+                                       <option value="">
+                                        Select Category
+                                        </option>
+                                        <option value="Programming">
+                                            Programming
+                                        </option>
+                                        <option value="Networking">
+                                            Networking
+                                        </option>
+                                        <option value="Database">
+                                            Database
+                                        </option>
+                                        <option value="Artificial Intelligence">
+                                            Artificial Intelligence
+                                        </option>
+                                        <option value="Software Engineering">
+                                            Software Engineering
+                                        </option>
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Book Shelf -->
+
+                                <div class="col-md-6">
+                                    <label for="shelf" class="form-label fw-semibold">Shelf</label>
+
+                                    <input type="text"
+                                    id="shelf"
+                                    name="shelf"
+                                    class="form-control"
+                                    placeholder="Enter Shelf No."
+                                    required>
+                                </div>
+
+
+                                <!-- Quantity -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label fw-semibold">
+                                        Quantity
+                                    </label>
+
+                                    <input type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    class="form-control"
+                                    placeholder="Enter Quantity"
+                                    min="1"
+                                    required>
+
+                                </div>
+
+
+                                <!-- Submit Buttons -->
+
+                                <div class="col-12 mt-4">
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary me-2">
+
+                                        <i class="bi bi-plus-circle me-1"></i>
+
+                                        Add Book
+
+                                    </button>
+
+                                    <!-- SCAN BARCODE BUTTON -->
+                                    <button
+                                        type="button"
+                                        class="btn btn-outline-primary me-2 scanner-action-btn"
+                                        onclick="openScanner()"
+                                        title="Scan Barcode">
+
+                                        <i class="bi bi-upc-scan me-1"></i>
+
+                                        Scan Barcode
+
+                                    </button>
+
+                                    <button
+                                        type="reset"
+                                        class="btn btn-secondary">
+
+                                        <i class="bi bi-arrow-counterclockwise me-1"></i>
+
+                                        Reset
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= BOOK RECORD ================= -->
+
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-white">
+
+                        <h5 class="fw-bold mb-0">
+
+                            <i class="bi bi-journal-text"></i>
+
+                            Book Records
+
+                        </h5>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover align-middle">
+
+                                <thead>
+                                    <tr>
+                                        <th>Sl.no.</th>
+                                        <th>ISBN Number</th>
+                                        <th>Book Name</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Shelf</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <!-- Book 1 -->
+
+                                    <tr>
+
+                                        <td>1</td>
+
+                                        <td>9780070630921</td>
+
+                                        <td>Java Programming</td>
+
+                                        <td>Herbert Schildt</td>
+
+                                        <td>Programming</td>
+
+                                        <td>A-01</td>
+
+                                        <td>10</td>
+
+                                        <td>
+                                            <span class="badge bg-success">
+                                                Available
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-name="Java Programming"
+                                            data-author="Herbert Schildt"
+                                            data-category="Programming"
+                                            data-isbn="9780070630921"
+                                            data-quantity="10"
+                                            data-shelf="A-01">
+
+                                            <i class="bi bi-pencil"></i>
+                                                Edit
+
+                                            </button>
+
+                                            <button
+                                                class="btn btn-sm btn-danger">
+
+                                                <i class="bi bi-trash"></i>
+
+                                                Delete
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- Book 2 -->
+
+                                    <tr>
+
+                                        <td>2</td>
+
+                                        <td>9780070633223</td>
+
+                                        <td>Database Management System</td>
+
+                                        <td>Korth</td>
+
+                                        <td>Database</td>
+
+                                        <td>D-05</td>
+
+                                        <td>8</td>
+
+                                        <td>
+                                            <span class="badge bg-danger">
+                                                Issued
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-name="Database Management System"
+                                            data-author="Korth"
+                                            data-category="Database"
+                                            data-isbn="9780073523323"
+                                            data-quantity="8"
+                                            data-shelf="D-05">
+
+                                            <i class="bi bi-pencil"></i>
+                                                Edit
+
+                                            </button>
+
+                                            <button
+                                                class="btn btn-sm btn-danger">
+
+                                                <i class="bi bi-trash"></i>
+
+                                                Delete
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- Book 3 -->
+
+                                    <tr>
+
+                                        <td>3</td>
+
+                                        <td>9780070635234</td>
+
+                                        <td>Computer Networks</td>
+
+                                        <td>Andrew S. Tanenbaum</td>
+
+                                        <td>Networking</td>
+                                        
+                                        <td>A-03</td>
+
+                                        <td>12</td>
+
+                                        <td>
+                                            <span class="badge bg-success">
+                                                Available
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-name="Computer Networks"
+                                            data-author="Andrew S. Tanenbaum"
+                                            data-category="Networking"
+                                            data-isbn="9780132126953"
+                                            data-quantity="12"
+                                            data-shelf="A-03">
+
+                                            <i class="bi bi-pencil"></i>
+                                                Edit
+
+                                            </button>
+
+                                            <button
+                                                class="btn btn-sm btn-danger">
+
+                                                <i class="bi bi-trash"></i>
+
+                                                Delete
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Book 4 -->
+
+                                    <tr>
+
+                                        <td>4</td>
+
+                                        <td>9780070495438</td>
+
+                                        <td>Advanced Java Programming</td>
+
+                                        <td>Herbert Schildt</td>
+
+                                        <td>Advanced Programming</td>
+
+                                        <td>B-05</td>
+
+                                        <td>15</td>
+
+                                        <td>
+                                        <span class="badge bg-success">
+                                            Available
+                                        </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-id="BK004"
+                                            data-name="Advanced Java Programming"
+                                            data-author="Herbert Schildt"
+                                            data-category="Advanced Programming"
+                                            data-isbn="9780070495438"
+                                            data-quantity="15"
+                                            data-shelf="B-05">
+
+                                                <i class="bi bi-pencil"></i>
+                                                    Edit
+
+                                                </button>
+
+                                                <button
+                                                class="btn btn-sm btn-danger">
+
+                                                    <i class="bi bi-trash"></i>
+                                                        Delete
+
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+
+                                    <!-- Book 5 -->
+
+                                    <tr>
+
+                                        <td>5</td>
+
+                                        <td>9780133943030</td>
+
+                                        <td>Software Engineering</td>
+
+                                        <td>Ian Sommerville</td>
+
+                                        <td>Software Engineering</td>
+
+                                        <td>B-06</td>
+
+                                        <td>20</td>
+
+                                        <td>
+                                            <span class="badge bg-success">
+                                                Available
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-id="BK005"
+                                            data-name="Software Engineering"
+                                            data-author="Ian Sommerville"
+                                            data-category="Software Engineering"
+                                            data-isbn="9780133943030"
+                                            data-quantity="20"
+                                            data-shelf="B-06">
+
+                                                <i class="bi bi-pencil"></i>
+                                                    Edit
+
+                                                </button>
+
+                                                <button
+                                                class="btn btn-sm btn-danger">
+
+                                                    <i class="bi bi-trash"></i>
+                                                        Delete
+
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+
+                                    <!-- Book 6 -->
+
+                                    <tr>
+
+                                        <td>6</td>
+
+                                        <td>9780073523293</td>
+
+                                        <td>Data Communication and Computer Networks</td>
+
+                                        <td>Behrouz A. Forouzan</td>
+
+                                        <td>Networking</td>
+
+                                        <td>C-01</td>
+
+                                        <td>18</td>
+
+                                        <td>
+                                            <span class="badge bg-danger">
+                                                Issued
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            onclick="editBook(this)"
+                                            data-id="BK006"
+                                            data-name="Data Communication and Computer Networks"
+                                            data-author="Behrouz A. Forouzan"
+                                            data-category="Networking"
+                                            data-isbn="9780073523293"
+                                            data-quantity="18"
+                                            data-shelf="C-01">
+
+                                                <i class="bi bi-pencil"></i>
+                                                    Edit
+
+                                                </button>
+
+                                                <button
+                                                class="btn btn-sm btn-danger">
+
+                                                    <i class="bi bi-trash"></i>
+                                                        Delete
+
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= ISBN BARCODE SCANNER MODAL ================= -->
+                <div class="modal fade" id="qrScannerModal" tabindex="-1" aria-labelledby="qrScannerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div>
+                                    <h5 class="modal-title fw-bold" id="qrScannerModalLabel">
+                                        <i class="bi bi-upc-scan me-2"></i>Scan Book ISBN Barcode
+                                    </h5>
+                                    <small class="text-muted">Scan the barcode on the back of the book or upload a barcode image.</small>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <button type="button" class="btn btn-primary" id="cameraTabBtn">
+                                        <i class="bi bi-camera me-1"></i> Use Camera
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" id="uploadTabBtn">
+                                        <i class="bi bi-upload me-1"></i> Upload Barcode Image
+                                    </button>
+                                </div>
+
+                                <section id="cameraPanel">
+                                    <div id="qr-reader" class="mx-auto" style="width:100%;max-width:520px;"></div>
+                                    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+                                        <button type="button" class="btn btn-success" id="startCameraBtn">
+                                            <i class="bi bi-camera-video me-1"></i> Start Camera
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary" id="stopCameraBtn" disabled>
+                                            <i class="bi bi-camera-video-off me-1"></i> Stop Camera
+                                        </button>
+                                    </div>
+                                    <p class="small text-muted text-center mt-2 mb-0">
+                                        Align the book's 13-digit ISBN barcode within the highlighted box. Requires HTTPS or localhost for camera access.
+                                    </p>
+                                </section>
+
+                                <section id="uploadPanel" hidden>
+                                    <div class="border rounded-3 p-4 text-center">
+                                        <i class="bi bi-upc display-5 text-primary"></i>
+                                        <h6 class="fw-bold mt-2">Upload ISBN Barcode Image</h6>
+                                        <p class="text-muted small">Choose a clear JPG, PNG, or WEBP image containing the book's ISBN barcode.</p>
+                                        <input type="file" class="form-control" id="qrImageInput" accept="image/*">
+                                        <button type="button" class="btn btn-primary mt-3" id="scanImageBtn">
+                                            <i class="bi bi-upc-scan me-1"></i> Scan Barcode Image
+                                        </button>
+                                    </div>
+                                </section>
+
+                                <div id="qrScanStatus" class="alert alert-info mt-3 mb-0" role="status" aria-live="polite">
+                                    Start the camera or upload a barcode image to begin.
+                                </div>
+                                <div id="bookLookupDetails" class="mt-3" hidden></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ================= FOOTER ================= -->
+
+                <footer class="text-center text-muted mt-4">
+
+                    <small>
+                        © 2026 Smart Library Management System
+                    </small>
+
+                </footer>
+
+    </main>
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <!-- Barcode & QR Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+
+<script>
+
+function editBook(button) {
+
+    // Get book details
+    const bookId = button.getAttribute("data-id");
+    const bookName = button.getAttribute("data-name");
+    const author = button.getAttribute("data-author");
+    const category = button.getAttribute("data-category");
+    const isbn = button.getAttribute("data-isbn");
+    const quantity = button.getAttribute("data-quantity");
+
+
+    // Fill the form
+    const titleField = document.getElementById("title");
+    const authorField = document.getElementById("author");
+    const categoryField = document.getElementById("category");
+    const isbnField = document.getElementById("isbn");
+    const quantityField = document.getElementById("quantity");
+    const shelfField = document.getElementById("shelf");
+
+    if (titleField) titleField.value = bookName || "";
+    if (authorField) authorField.value = author || "";
+    if (categoryField) categoryField.value = category || "";
+    if (isbnField) isbnField.value = isbn || "";
+    if (quantityField) quantityField.value = quantity || "";
+
+    const shelf = button.getAttribute("data-shelf");
+    if (shelfField) shelfField.value = shelf || "";
+
+    // Scroll to the form
+    document.querySelector(".page-content").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+// =====================================================
+// ISBN BARCODE SCANNER + GOOGLE BOOKS & OPEN LIBRARY
+// =====================================================
+
+let qrScanner = null;
+let cameraIsRunning = false;
+let qrModalInstance = null;
+
+function setScanStatus(message, type = "info") {
+    const status = document.getElementById("qrScanStatus");
+    status.className = `alert alert-${type} mt-3 mb-0`;
+    status.textContent = message;
+}
+
+function openScanner() {
+    const modalElement = document.getElementById("qrScannerModal");
+    qrModalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+    qrModalInstance.show();
+    showScannerPanel("camera");
+    setScanStatus("Point camera at the book's ISBN barcode (EAN-13) or upload a photo.", "info");
+}
+
+function showScannerPanel(panel) {
+    const cameraPanel = document.getElementById("cameraPanel");
+    const uploadPanel = document.getElementById("uploadPanel");
+    const cameraBtn = document.getElementById("cameraTabBtn");
+    const uploadBtn = document.getElementById("uploadTabBtn");
+
+    cameraPanel.hidden = panel !== "camera";
+    uploadPanel.hidden = panel !== "upload";
+    cameraBtn.className = panel === "camera" ? "btn btn-primary" : "btn btn-outline-primary";
+    uploadBtn.className = panel === "upload" ? "btn btn-primary" : "btn btn-outline-primary";
+}
+
+function extractISBN(rawValue) {
+    const value = String(rawValue || "").trim();
+
+    const cleanDigits = value.replace(/[^0-9Xx]/g, "").toUpperCase();
+    if (cleanDigits.length === 10 || cleanDigits.length === 13) {
+        return cleanDigits;
+    }
+
+    const isbnMatch = value.match(/(?:97[89])?[\s-]?\d[\d\s-]{8,15}\d|(?:ISBN(?:-1[03])?:?\s*)?(?:97[89])?\d{9}[\dXx]/i);
+    if (isbnMatch) {
+        const candidate = isbnMatch[0].replace(/[^0-9Xx]/g, "").toUpperCase();
+        if (candidate.length === 10 || candidate.length === 13) return candidate;
+    }
+
+    try {
+        const url = new URL(value);
+        for (const [key, item] of url.searchParams.entries()) {
+            if (/isbn/i.test(key)) {
+                const candidate = item.replace(/[^0-9Xx]/g, "").toUpperCase();
+                if (candidate.length === 10 || candidate.length === 13) return candidate;
+            }
+        }
+    } catch (_) {}
+
+    return "";
+}
+
+async function handleQrResult(decodedText) {
+    if (cameraIsRunning) await stopCamera();
+
+    const isbn = extractISBN(decodedText);
+    if (!isbn) {
+        setScanStatus("Barcode detected, but not a valid 10- or 13-digit ISBN. Please align properly.", "warning");
+        return;
+    }
+
+    document.getElementById("isbn").value = isbn;
+    setScanStatus(`ISBN ${isbn} detected! Fetching book information...`, "info");
+    await fetchBookDetails(isbn);
+}
+
+async function fetchBookDetails(isbn) {
+    const detailsBox = document.getElementById("bookLookupDetails");
+    detailsBox.hidden = false;
+    detailsBox.innerHTML = `
+        <div class="text-center p-3">
+            <div class="spinner-border text-primary spinner-border-sm" role="status"></div>
+            <span class="ms-2 small text-muted">Searching book details...</span>
+        </div>`;
+
+    let bookData = null;
+
+    // STEP 1: GOOGLE BOOKS API (Fast & highly accurate)
+    try {
+        const gResponse = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${encodeURIComponent(isbn)}`);
+        if (gResponse.ok) {
+            const gData = await gResponse.json();
+            if (gData.totalItems > 0 && gData.items && gData.items.length > 0) {
+                const info = gData.items[0].volumeInfo;
+                bookData = {
+                    title: info.title || "",
+                    authors: (info.authors || []).join(", "),
+                    publisher: info.publisher || "",
+                    publishedDate: info.publishedDate || "",
+                    categories: (info.categories || []).join(", "),
+                    coverUrl: info.imageLinks ? (info.imageLinks.thumbnail || info.imageLinks.smallThumbnail || "").replace("http://", "https://") : ""
+                };
+            }
+        }
+    } catch (err) {
+        console.warn("Google Books API failed, trying Open Library fallback...", err);
+    }
+
+    // STEP 2: OPEN LIBRARY API (Fallback)
+    if (!bookData) {
+        try {
+            const olResponse = await fetch(`https://openlibrary.org/isbn/${encodeURIComponent(isbn)}.json`);
+            if (olResponse.ok) {
+                const olBook = await olResponse.json();
+                bookData = {
+                    title: olBook.title || "",
+                    authors: "",
+                    publisher: Array.isArray(olBook.publishers) ? olBook.publishers.join(", ") : "",
+                    publishedDate: olBook.publish_date || "",
+                    categories: "",
+                    coverUrl: olBook.covers && olBook.covers.length ? `https://covers.openlibrary.org/b/id/${olBook.covers[0]}-M.jpg` : ""
+                };
+            }
+        } catch (err) {
+            console.warn("Open Library fallback also failed:", err);
+        }
+    }
+
+    // STEP 3: RESULT & AUTO-FILL
+    if (!bookData || !bookData.title) {
+        detailsBox.innerHTML = "";
+        setScanStatus(`ISBN ${isbn} detected, but book details were not found online. You can enter them manually.`, "warning");
+        return;
+    }
+
+    // Fill form inputs
+    const titleField = document.getElementById("title");
+    if (titleField) titleField.value = bookData.title;
+
+    const authorField = document.getElementById("author");
+    if (authorField && bookData.authors) authorField.value = bookData.authors;
+
+    const isbnField = document.getElementById("isbn");
+    if (isbnField && !isbnField.value) isbnField.value = isbn;
+
+    // Render Preview
+    const coverHtml = bookData.coverUrl
+        ? `<img src="${bookData.coverUrl}" alt="Book cover" class="img-thumbnail me-3 mb-2" style="max-width:90px;max-height:125px;object-fit:contain;">`
+        : "";
+
+    detailsBox.innerHTML = `
+        <div class="card border-success">
+            <div class="card-body">
+                <h6 class="fw-bold text-success"><i class="bi bi-check-circle-fill me-1"></i>Book Found</h6>
+                <div class="d-flex align-items-start flex-wrap">
+                    ${coverHtml}
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold fs-6 text-dark">${escapeHtml(bookData.title)}</div>
+                        ${bookData.authors ? `<div class="small mt-1 text-muted"><strong>Author:</strong> ${escapeHtml(bookData.authors)}</div>` : ""}
+                        ${bookData.publisher ? `<div class="small mt-1 text-muted"><strong>Publisher:</strong> ${escapeHtml(bookData.publisher)}</div>` : ""}
+                        ${bookData.publishedDate ? `<div class="small mt-1 text-muted"><strong>Published:</strong> ${escapeHtml(bookData.publishedDate)}</div>` : ""}
+                        ${bookData.categories ? `<div class="small mt-1 text-muted"><strong>Category:</strong> ${escapeHtml(bookData.categories)}</div>` : ""}
+                        <div class="small mt-1 text-muted"><strong>ISBN:</strong> ${escapeHtml(isbn)}</div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    setScanStatus("Book details fetched successfully! Form has been auto-filled.", "success");
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[char]));
+}
+
+async function startCamera() {
+    if (typeof Html5Qrcode === "undefined") {
+        setScanStatus("Scanner library could not load. Check your internet connection.", "danger");
+        return;
+    }
+    if (cameraIsRunning) return;
+
+    try {
+        if (!qrScanner) {
+            const supportedFormats = [
+                Html5QrcodeSupportedFormats.EAN_13,
+                Html5QrcodeSupportedFormats.EAN_8,
+                Html5QrcodeSupportedFormats.CODE_128,
+                Html5QrcodeSupportedFormats.UPC_A,
+                Html5QrcodeSupportedFormats.UPC_E,
+                Html5QrcodeSupportedFormats.QR_CODE
+            ];
+            qrScanner = new Html5Qrcode("qr-reader", {
+                formatsToSupport: supportedFormats,
+                verbose: false
+            });
+        }
+
+        await qrScanner.start(
+            { facingMode: "environment" },
+            { 
+                fps: 15, 
+                qrbox: { width: 320, height: 150 }, 
+                aspectRatio: 1.777778 
+            },
+            handleQrResult,
+            () => {}
+        );
+        cameraIsRunning = true;
+        document.getElementById("startCameraBtn").disabled = true;
+        document.getElementById("stopCameraBtn").disabled = false;
+        setScanStatus("Camera active. Align the horizontal barcode inside the box.", "success");
+    } catch (error) {
+        setScanStatus("Unable to start camera. Allow permissions and use HTTPS or localhost.", "danger");
+    }
+}
+
+async function stopCamera() {
+    if (qrScanner && cameraIsRunning) {
+        try {
+            await qrScanner.stop();
+            await qrScanner.clear();
+        } catch (_) {}
+    }
+    cameraIsRunning = false;
+    document.getElementById("startCameraBtn").disabled = false;
+    document.getElementById("stopCameraBtn").disabled = true;
+}
+
+async function scanUploadedImage() {
+    const input = document.getElementById("qrImageInput");
+    if (!input.files || !input.files[0]) {
+        setScanStatus("Please choose an image containing an ISBN barcode.", "warning");
+        return;
+    }
+    if (typeof Html5Qrcode === "undefined") {
+        setScanStatus("Scanner library could not load. Check internet connection.", "danger");
+        return;
+    }
+
+    try {
+        if (!qrScanner) {
+            const supportedFormats = [
+                Html5QrcodeSupportedFormats.EAN_13,
+                Html5QrcodeSupportedFormats.EAN_8,
+                Html5QrcodeSupportedFormats.CODE_128,
+                Html5QrcodeSupportedFormats.UPC_A,
+                Html5QrcodeSupportedFormats.UPC_E,
+                Html5QrcodeSupportedFormats.QR_CODE
+            ];
+            qrScanner = new Html5Qrcode("qr-reader", {
+                formatsToSupport: supportedFormats,
+                verbose: false
+            });
+        }
+        setScanStatus("Reading ISBN barcode from the selected image...", "info");
+        const decodedText = await qrScanner.scanFile(input.files[0], true);
+        await handleQrResult(decodedText);
+    } catch (error) {
+        setScanStatus("No readable barcode found in image. Ensure image is clear and well-lit.", "warning");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("cameraTabBtn").addEventListener("click", () => showScannerPanel("camera"));
+    document.getElementById("uploadTabBtn").addEventListener("click", () => {
+        showScannerPanel("upload");
+        if (cameraIsRunning) stopCamera();
+    });
+    document.getElementById("startCameraBtn").addEventListener("click", startCamera);
+    document.getElementById("stopCameraBtn").addEventListener("click", stopCamera);
+    document.getElementById("scanImageBtn").addEventListener("click", scanUploadedImage);
+
+    document.getElementById("qrScannerModal").addEventListener("hidden.bs.modal", function () {
+        if (cameraIsRunning) stopCamera();
+    });
+});
+
+</script>
+
+</body>
+
+</html>
